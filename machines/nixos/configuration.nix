@@ -152,7 +152,7 @@
       extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "users" "shared" "bluetooth" "power" "disk" "mpd" ];
       shell = pkgs.fish;
       uid = 1000;
-    }
+    };
   };
 
   # Nix daemon config
