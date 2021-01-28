@@ -61,3 +61,11 @@
 
 ;; Immediate completion:
 (setq company-minimum-prefix-length 1)
+
+;; Org-Roam
+(setq org-roam-directory "~/org"
+      deft-directory "~/org")
+
+;; Map mouse-4 and mouse-5 to scroll up/down
+(map! :n [mouse-8] #'scroll-up-command
+      :n [mouse-9] #'scroll-down-command)
