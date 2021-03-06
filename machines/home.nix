@@ -40,8 +40,6 @@ let
   ];
 
   utilityPkgs = with pkgs; [
-     coreutils
-     less
      wget
      unzip
      unrar
@@ -49,9 +47,6 @@ let
      htop
      xclip
      wl-clipboard
-     curlFull
-     diffutils
-     findutils
      gnumake
      ncmpcpp
      ffmpeg

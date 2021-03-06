@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'challenger-deep)
+(setq doom-theme 'doom-city-lights)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -62,10 +62,17 @@
 ;; Immediate completion:
 (setq company-minimum-prefix-length 1)
 
-;; Org-Roam
+;; ORG-Roam
 (setq org-roam-directory "~/org"
       deft-directory "~/org")
 
 ;; Map mouse-4 and mouse-5 to scroll up/down
 (map! :n [mouse-8] #'scroll-up-command
       :n [mouse-9] #'scroll-down-command)
+
+;; PDF-Tools
+(use-package pdf-view
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :hook (pdf-tools-enabled . hide-mode-line-mode)
+  :config
+  (setq pdf-view-midnight-colors '("#ebdbb2" . "#262626")))

@@ -19,6 +19,7 @@
 {
   programs.emacs = {
     enable = true;
+    package = pkgs.emacsWithPackages (epkgs: [ epkgs.emacs-libvterm ]);
   };
 
   services.emacs = {
