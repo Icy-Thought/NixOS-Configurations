@@ -1,5 +1,4 @@
 home.packages = with pkgs; [
-
   nnn
   fish
   pwgen
@@ -8,5 +7,4 @@ home.packages = with pkgs; [
   mpd
   ncmpcpp
   ffmpeg
-
 ];

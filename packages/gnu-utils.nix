@@ -1,5 +1,4 @@
 home.packages = with pkgs; [
-
   coreutils
   less
   wget
@@ -11,5 +10,4 @@ home.packages = with pkgs; [
   iwd
   git
   pv
-
 ];

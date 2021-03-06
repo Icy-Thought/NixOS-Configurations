@@ -1,5 +1,4 @@
 home.packages = with pkgs; [
-
   fd
   ripgrep
   skim
@@ -14,5 +13,4 @@ home.packages = with pkgs; [
   wl-clipboard
   gitAndTools.gh
   dconf2nix
-
 ];

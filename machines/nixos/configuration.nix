@@ -99,38 +99,37 @@
 
       libinput = {
         enable = true;
-        naturalScrolling = true;
-        tapping = true;
-        disableWhileTyping = true;
+        touchpad = {
+          naturalScrolling = true;
+          tapping = true;
+          disableWhileTyping = true;
+        };
       };
     
       # GNOME DE:
-      displayManager.gdm.enable = true;
-      desktopManager.gnome3.enable = true;
+      # displayManager.gdm.enable = true;
+      # desktopManager.gnome3.enable = true;
+
+      # KDE-Plasma
+      displayManager.sddm.enable = true;
+      desktopManager.plasma5.enable = true;
     };
   };
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
 
   # systemd.user.services = {
     # emacs.enable = true;
     # mpd.enable = true;
   # };
 
-  fileSystems = {
-    "/".options = [ "noatime,x-gvfs-hide" ];
-    "/boot/".options = [ "noatime,x-gvfs-hide" ];
-  };
+  # fileSystems = { //fix
+  #   "/".options = [ "noatime,x-gvfs-hide" ];
+  #   "/boot/".options = [ "noatime,x-gvfs-hide" ];
+  # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.fish;
     mutableUsers = false;
-    extraGroups = {
-      zeref = { gid = 1000 ;};
-    };
 
     users.root = {
        initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
@@ -140,18 +139,16 @@
 
     users.zeref = {
       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
-      isNormalUser = true;
       extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "users" "shared" "bluetooth" "power" "disk" "mpd" ];
       shell = pkgs.fish;
-      uid = 1000;
+      isNormalUser = true;
     };
 
     users.gilgamesh = {
       initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
-      isNormalUser = true;
       extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "users" "shared" "bluetooth" "power" "disk" "mpd" ];
       shell = pkgs.fish;
-      uid = 1000;
+      isNormalUser = true;
     };
   };
 
@@ -179,6 +176,5 @@
     # Required by Cachix to be used as non-root user
     trustedUsers = [ "root" "wukong" ];
   };
-
 }
 
