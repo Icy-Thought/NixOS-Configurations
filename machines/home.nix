@@ -48,14 +48,14 @@ let
      xclip
      wl-clipboard
      gnumake
-     ncmpcpp
+     # ncmpcpp
      ffmpeg
      spotify-tui
      speedtest-cli
      youtube-dl
      fish
      pwgen
-     mpd
+     # mpd
      nnn
      ripgrep
      skim
@@ -95,8 +95,8 @@ in
     ../extras/tmux/default.nix
     ../extras/neovim/default.nix
     ../extras/emacs/default.nix
-    ../extras/mpd/default.nix
-    ../extras/ncmpcpp/default.nix
+    # ../extras/mpd/default.nix
+    # ../extras/ncmpcpp/default.nix
   ];
 
   nixpkgs = {
