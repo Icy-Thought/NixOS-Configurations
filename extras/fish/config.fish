@@ -1,7 +1,7 @@
 # General Configurations
 set fish_greeting
 set -gx EDITOR nvim
-set -g fish_vi_keybindings
+set -g fish_key_bindings fish_vi_keybindings
 
 # Customizable fish_title
 function fish_title
@@ -17,6 +17,7 @@ end
 # Defining Paths
 set PATH $HOME/.cargo/bin $PATH
 set PATH $HOME/.emacs.d/bin $PATH
+set PATH $HOME/go/bin $PATH
 
 # Sources
 starship init fish | source
