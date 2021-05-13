@@ -9,7 +9,7 @@
     ../../nixpkgs/gnome.nix
     ../../nixpkgs/editor.nix
     ../../nixpkgs/nix-utils.nix
-    ../.../nixpkgs/applications.nix
+    ../..//nixpkgs/applications.nix
     ../../nixpkgs/utils.nix
     ../../nixpkgs/git.nix
     ../../nixpkgs/tui.nix

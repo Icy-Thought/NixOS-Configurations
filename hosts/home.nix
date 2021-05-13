@@ -2,14 +2,14 @@
 {
   imports = [
     # Configurations
-    ../../modules/fish.nix
-    ../../modules/git.nix
-    ../../modules/alacritty.nix
-    ../../modules/emacs.nix
-    ../../modules/neovim.nix
-    ../../modules/tmux.nix
-    ../../modules/mpd.nix
-    ../../modules/ncmpcpp.nix
+    ../modules/fish.nix
+    ../modules/git.nix
+    ../modules/alacritty.nix
+    ../modules/emacs.nix
+    ../modules/neovim.nix
+    ../modules/tmux.nix
+    ../modules/mpd.nix
+    ../modules/ncmpcpp.nix
   ];
 
   nixpkgs = {
