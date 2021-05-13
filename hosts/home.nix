@@ -1,18 +1,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    # Packages
-    ./pkgs/desktop.nix
-    ./pkgs/gnome.nix
-    ./pkgs/editor.nix
-    ./pkgs/development.nix
-    ./pkgs/languages.nix
-    ./pkgs/gaming.nix
-    ./pkgs/nix-utils.nix
-    ./pkgs/utils.nix
-    ./pkgs/git.nix
-    ./pkgs/tui.nix
-    
     # Configurations
     ../nixpkgs/modules/fish.nix
     ../nixpkgs/modules/git.nix
@@ -36,16 +24,15 @@
     };
   }; 
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    man.enable   = true;
+    info.enable  = true;
+    adb.enable   = true;
+  };
 
   # Set nixpkgs options (for home-manager installed packages only).
   fonts.fontconfig.enable = true;
-
-  # Enable documentation.
-  programs = {
-    man.enable      = true;
-    info.enable     = true;
-  };
 
   # xdg.portal.enable = true;
 

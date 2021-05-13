@@ -29,8 +29,8 @@
     # Set GRUB2 to default boot.
     loader = {
       efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
       };
 
       grub = {
@@ -94,6 +94,8 @@
 
     xserver = {
       enable = true;
+      videoDrivers = [ "amdgpu"];
+
       layout = "us";
       xkbOptions = "eurosign:e";
 
@@ -107,19 +109,14 @@
       };
     
       # GNOME DE:
-      # displayManager.gdm.enable = true;
-      # desktopManager.gnome3.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome3.enable = true;
 
       # KDE-Plasma
-      displayManager.sddm.enable = true;
-      desktopManager.plasma5.enable = true;
+      # displayManager.sddm.enable = true;
+      # desktopManager.plasma5.enable = true;
     };
   };
-
-  # systemd.user.services = {
-    # emacs.enable = true;
-    # mpd.enable = true;
-  # };
 
   # fileSystems = { //fix
   #   "/".options = [ "noatime,x-gvfs-hide" ];
@@ -137,16 +134,16 @@
        packages = with pkgs; [ (neovim.override { viAlias = true; vimAlias = true; withNodeJs = true;}) ];
     };
 
-    users.zeref = {
+    users.sirius = {
       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
-      extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "users" "shared" "bluetooth" "power" "disk" "mpd" ];
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
       isNormalUser = true;
     };
 
-    users.gilgamesh = {
+    users.orca = {
       initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
-      extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "users" "shared" "bluetooth" "power" "disk" "mpd" ];
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
       isNormalUser = true;
     };
@@ -174,7 +171,7 @@
     package = pkgs.nixFlakes;
 
     # Required by Cachix to be used as non-root user
-    trustedUsers = [ "root" "wukong" ];
+    trustedUsers = [ "root" "sirius" ];
   };
 }
 
