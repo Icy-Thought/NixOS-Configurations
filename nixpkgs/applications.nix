@@ -12,7 +12,7 @@
     tdesktop                                            # Telegram Desktop.
     signal-desktop                                      # More secure WhatsApp alternative.
     fractal                                             # Rust-based matrix client.
-    gnome.geary                                         # Gnome 2nd E-Mail client.
+    # gnome.geary                                         # Gnome 2nd E-Mail client.
     gnome.polari                                      # Gnome IRC client.
     easytag                                             # M3U Editor.
     transmission-gtk                                    # BitTorrent Client.

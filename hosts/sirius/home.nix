@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../home.nix
+    ../home.nix
 
     # Packages
     ../../nixpkgs/desktop.nix
