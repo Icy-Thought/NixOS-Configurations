@@ -12,7 +12,7 @@ sudo nixos-rebuild switch --upgrade
 
 # Home manager
 mkdir -p $HOME/.config/nixpkgs/
-ln -s NixOS-Configurations/hosts/wukong/home.nix $HOME/.config/nixpkgs/
+ln -s NixOS-Configurations/hosts/sirius/home.nix $HOME/.config/nixpkgs/
 
 nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
@@ -21,5 +21,5 @@ nix-shell '<home-manager>' -A install
 home-manager switch
 
 # Doom-emacs
-git clone --depth 1 https://github.com/hlissner/doom-emacs $HOME/.emacs.d
-$HOME/.emacs.d/bin/doom install
+# git clone --depth 1 https://github.com/hlissner/doom-emacs $HOME/.emacs.d
+# $HOME/.emacs.d/bin/doom install

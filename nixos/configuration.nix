@@ -24,7 +24,7 @@
 
   # Boot configurations.
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod.kernel;
+    kernelPackages = pkgs.linuxPackages_xanmod;
     # kernelPackages = pkgs.linuxPackages_xanmod.amdgpu-pro;
     kernelParams = [ "pcie_aspm.policy=performance" ];
     
@@ -32,7 +32,7 @@
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        efiSysMountPoint = "/boot";
       };
 
       grub = {
@@ -84,7 +84,7 @@
   security.rtkit.enable = true;
 
   hardware = {
-    pulseaudio.enable = true;
+    pulseaudio.enable = false;
     bluetooth.enable = true;
   };
 
@@ -148,7 +148,7 @@
     
       # GNOME DE:
       displayManager.gdm.enable = true;
-      desktopManager.gnome3.enable = true;
+      desktopManager.gnome.enable = true;
 
       # KDE-Plasma
       # displayManager.sddm.enable = true;
