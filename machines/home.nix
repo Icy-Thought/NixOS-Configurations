@@ -1,102 +1,27 @@
 { config, pkgs, ... }:
-let
-  defaultPkgs = with pkgs; [
-    any-nix-shell
-    zathura
-    alacritty
-    brave
-    latest.firefox-nightly-bin
-    gimp
-    inkscape
-    libreoffice
-    gnupg
-    steam
-    lutris
-    osu-lazer
-    obs-studio
-    qalculate-gtk
-    signal-desktop
-    fractal
-    easytag
-
-    # Gnome3
-    # gnome3.gnome-tweaks
-    # gnomeExtensions.gsconnect
-    # gnomeExtensions.caffeine
-  ];
-
-   editorsPkgs = with pkgs; [
-    # doom-emacs
-    emacs
-    gnuplot
-    neovim
-    tmux
-   ];
-
-  developmentPkgs = with pkgs; [
-    latest.rustChannels.nightly.rust
-    clang
-    cmake
-  ];
-
-  utilityPkgs = with pkgs; [
-     wget
-     unzip
-     unrar
-     neofetch
-     htop
-     xclip
-     wl-clipboard
-     gnumake
-     # ncmpcpp
-     ffmpeg
-     spotify-tui
-     speedtest-cli
-     youtube-dl
-     fish
-     pwgen
-     # mpd
-     nnn
-     ripgrep
-     skim
-     exa
-     fd
-     pv
-  ];
-
-  environmentPkgs = with pkgs; [
-    wayland
-    networkmanagerapplet
-    iwd
-    dconf
-    aspellDicts.en
-    aspellDicts.sv
-    hunspellDicts.sv_SE
-    hunspellDicts.en_US
-    ibus
-    ibus-engines.libpinyin
-    libpinyin
-  ];
-
-  gitPkgs = with pkgs.gitAndTools; [
-    diff-so-fancy
-    git-crpt
-    hub
-    tig
-  ];
-
-in
 {
   imports = [
+    # Packages
+    ./pkgs/desktop.nix
+    ./pkgs/gnome.nix
+    ./pkgs/editor.nix
+    ./pkgs/development.nix
+    ./pkgs/languages.nix
+    ./pkgs/gaming.nix
+    ./pkgs/nix-utils.nix
+    ./pkgs/utils.nix
+    ./pkgs/git.nix
+    ./pkgs/tui.nix
+    
     # Configurations
-    ../extras/git/default.nix
-    ../extras/fish/default.nix
-    ../extras/alacritty/default.nix
-    ../extras/tmux/default.nix
-    ../extras/neovim/default.nix
-    ../extras/emacs/default.nix
-    # ../extras/mpd/default.nix
-    # ../extras/ncmpcpp/default.nix
+    ../nixpkgs/modules/fish.nix
+    ../nixpkgs/modules/git.nix
+    ../nixpkgs/modules/alacritty.nix
+    ../nixpkgs/modules/emacs.nix
+    ../nixpkgs/modules/neovim.nix
+    ../nixpkgs/modules/tmux.nix
+    ../nixpkgs/modules/mpd.nix
+    ../nixpkgs/modules/ncmpcpp.nix
   ];
 
   nixpkgs = {
