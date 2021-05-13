@@ -23,5 +23,8 @@
     zstd                                               # Undo-fu-session/undo-tree-compression.
     imagemagick                                        # LaTeX image export.
     winetricks                                         # Install required DLL to escape exe trouble.
+    tree-sitter                                        # Parser generator + incremental parsing lib.
+    starship                                           # Minimal + customizable prompt.
+    pipewire                                           # Multimedia pipeline API.
   ];
 }

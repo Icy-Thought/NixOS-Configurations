@@ -24,7 +24,9 @@
 
   # Boot configurations.
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod.kernel;
+    # kernelPackages = pkgs.linuxPackages_xanmod.amdgpu-pro;
+    kernelParams = [ "pcie_aspm.policy=performance" ];
     
     # Set GRUB2 to default boot.
     loader = {
@@ -78,8 +80,8 @@
     noto-fonts-emoji
   ];
 
-  # Enable sound + bluetooth
-  sound.enable = true;
+  # Recommended for pipewire
+  security.rtkit.enable = true;
 
   hardware = {
     pulseaudio.enable = true;
@@ -88,6 +90,42 @@
 
   # Enable X11 + CUPS + Flatpak.
   services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+
+      # If you want to use JACK applications, uncomment:
+      # #jack.enable = true;
+
+      # Bluetooth pipewire settings:
+      media-session.config.bluez-monitor.rules = [
+        {
+          # Matches all cards
+          matches = [ { "device.name" = "~bluez_card.*"; } ];
+          actions = {
+            "update-props" = {
+              "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
+              # mSBC is not expected to work on all headset + adapter combinations.
+              "bluez5.msbc-support" = true;
+            };
+          };
+        }
+        {
+          matches = [
+            # Matches all sources
+            { "node.name" = "~bluez_input.*"; }
+            # Matches all outputs
+            { "node.name" = "~bluez_output.*"; }
+          ];
+          actions = {
+            "node.pause-on-idle" = false;
+          };
+        }
+      ];
+    };
+
     printing = {
       enable = true;
     };
