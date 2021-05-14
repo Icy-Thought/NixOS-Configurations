@@ -20,7 +20,7 @@
 
   nixpkgs = {
     overlays = [
-      (import ../overlays/firefox-overlay.nix)
+      (import ../../overlays/firefox-overlay.nix)
     ];
 
     config = {
@@ -87,20 +87,43 @@
   ];
 
   # Recommended for pipewire
-  security.rtkit.enable = true;
+  security = {
+    rtkit = {
+      enable = true;
+    };
+  };
 
   hardware = {
-    pulseaudio.enable = false;
-    bluetooth.enable = true;
+    opengl = {
+      extraPackages = with pkgs; [
+        amdvlk
+        driversi686Linux.amdvlk
+      ];
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+
+    pulseaudio = {
+      enable = false;
+    };
+
+    bluetooth = {
+      enable = true;
+    };
   };
 
   # Enable X11 + CUPS + Flatpak.
   services = {
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+
+      pulse = {
+        enable = true;
+      };
 
       # If you want to use JACK applications, uncomment:
       # #jack.enable = true;
@@ -153,25 +176,41 @@
       };
     
       # GNOME DE:
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      displayManager.gdm = {
+        enable  = true;
+        wayland = true;
+      };
+
+      desktopManager.gnome = {
+        enable = true;
+      };
 
       # KDE-Plasma
       # displayManager.sddm.enable = true;
       # desktopManager.plasma5.enable = true;
     };
+
+    dbus.packages = [ pkgs.gnome.dconf ];
+    udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+
   };
 
-  environment.systemPackages = with pkgs; [
-    wayland                                             # Wayland window system code + protocol.
-    mesa                                                # FOSS 3D Graphics Lib.
-    vulkan-headers                                      # Vulkan Header files + API registery.
-    fish                                                # Shell with better defaults.
-    iwd                                                 # WPA_Supplicant alternative.
-    pipewire                                            # Multimedia pipeline API.
-    git                                                 # Tool for git usage.
-    latest.firefox-devedition-bin                       # Firefox + dev-tools enabled.
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      wayland                                             # Wayland window system code + protocol.
+      mesa                                                # FOSS 3D Graphics Lib.
+      vulkan-headers                                      # Vulkan Header files + API registery.
+      fish                                                # Shell with better defaults.
+      iwd                                                 # WPA_Supplicant alternative.
+      pipewire                                            # Multimedia pipeline API.
+      git                                                 # Tool for git usage.
+      latest.firefox-devedition-bin                       # Firefox + dev-tools enabled.
+    ];
+
+    variables = {
+      VK_ICD_FILENAMES = [ "/run/opengl-driver/share/vulkan/icd.d/amd_icd64.json" ];
+    };
+  };
 
   # fileSystems = { //fix
   #   "/".options = [ "noatime,x-gvfs-hide" ];
@@ -180,7 +219,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-    defaultUserShell = pkgs.fish;
+    defaultUserShell = pkgs.bash;
     mutableUsers = false;
 
     users.root = {
