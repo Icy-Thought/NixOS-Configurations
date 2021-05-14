@@ -27,7 +27,7 @@
 
         dynamic_padding = false;
 
-        decorations = none;
+        decorations = "none";
       };
 
       scrolling = {
