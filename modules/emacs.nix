@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   doom-emacs = pkgs.callPackage (builtins.fetchTarball {

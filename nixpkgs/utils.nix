@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     any-nix-shell                                      # Fish/ZSH support for nix-shell.

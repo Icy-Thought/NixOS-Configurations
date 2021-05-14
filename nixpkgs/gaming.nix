@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     wine-staging                                        # Latest Wine package.

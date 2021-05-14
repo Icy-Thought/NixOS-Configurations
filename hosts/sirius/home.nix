@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-
+{ pkgs, ... }:
 {
   imports = [
     ../home.nix
@@ -18,5 +17,4 @@
     ../../nixpkgs/tui.nix
     
   ];
-
 }
