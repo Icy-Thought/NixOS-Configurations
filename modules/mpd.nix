@@ -3,7 +3,7 @@
 {
   services.mpd = {
     enable = true;
-    extraConfig = builtins.readFile ../config/mpd.conf;
+    extraConfig = builtins.readFile ../home/config/mpd.conf;
   };
 
 }

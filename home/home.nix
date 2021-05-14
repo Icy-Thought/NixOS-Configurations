@@ -8,8 +8,9 @@
     ../modules/emacs.nix
     ../modules/neovim.nix
     ../modules/tmux.nix
-    ../modules/mpd.nix
-    ../modules/ncmpcpp.nix
+    # ../modules/gnome.nix
+    # ../modules/mpd.nix
+    # ../modules/ncmpcpp.nix
   ];
 
   nixpkgs = {

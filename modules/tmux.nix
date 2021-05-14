@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  tmuxConf = builtins.readFile ../config/tmux.conf;
+  tmuxConf = builtins.readFile ../home/config/tmux.conf;
 
 in
 {
