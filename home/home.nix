@@ -14,11 +14,6 @@
   ];
 
   nixpkgs = {
-    overlays = [
-      (import ../overlays/rust-overlay.nix)
-      (import ../overlays/neovim.nix)
-    ];
-
     config = {
       allowUnfree = true;  
     };
