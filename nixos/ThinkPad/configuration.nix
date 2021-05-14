@@ -204,7 +204,7 @@
       iwd                                                 # WPA_Supplicant alternative.
       pipewire                                            # Multimedia pipeline API.
       git                                                 # Tool for git usage.
-      latest.firefox-devedition-bin                       # Firefox + dev-tools enabled.
+      latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
     ];
 
     variables = {
