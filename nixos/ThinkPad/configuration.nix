@@ -30,6 +30,13 @@
     };
   };
 
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   # Boot configurations.
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
@@ -261,10 +268,7 @@
     extraOptions = ''
       keep-outputs     = true
       keep-derivations = true
-      experimental-features = nix-command flakes 
    '';
-
-    package = pkgs.nixFlakes;
 
     # Required by Cachix to be used as non-root user
     trustedUsers = [ "root" "sirius" ];

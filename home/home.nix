@@ -2,15 +2,15 @@
 {
   imports = [
     # Configurations
-    ../modules/fish.nix
-    ../modules/git.nix
-    ../modules/alacritty.nix
-    ../modules/emacs.nix
-    ../modules/neovim.nix
-    ../modules/tmux.nix
-    # ../modules/gnome.nix
-    # ../modules/mpd.nix
-    # ../modules/ncmpcpp.nix
+    ../nixpkgs/modules/fish.nix
+    ../nixpkgs/modules/git.nix
+    ../nixpkgs/modules/alacritty.nix
+    ../nixpkgs/modules/emacs.nix
+    ../nixpkgs/modules/neovim.nix
+    ../nixpkgs/modules/tmux.nix
+    # ../nixpkgs/modules/gnome.nix
+    # ../nixpkgs/modules/mpd.nix
+    # ../nixpkgs/modules/ncmpcpp.nix
   ];
 
   nixpkgs = {
