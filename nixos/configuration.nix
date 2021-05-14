@@ -156,6 +156,16 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    wayland                                             # Wayland window system code + protocol.
+    mesa                                                # FOSS 3D Graphics Lib.
+    vulkan-headers                                      # Vulkan Header files + API registery.
+    fish                                                # Shell with better defaults.
+    iwd                                                 # WPA_Supplicant alternative.
+    pipewire                                            # Multimedia pipeline API.
+    firefox-devedition-bin                              # Firefox + dev-tools enabled.
+  ];
+
   # fileSystems = { //fix
   #   "/".options = [ "noatime,x-gvfs-hide" ];
   #   "/boot/".options = [ "noatime,x-gvfs-hide" ];

@@ -5,14 +5,12 @@
     uutils-coreutils                                   # Rust Rewrite of GNU-coreutils.
     gnupg                                              # Encrypt/Decrypt software.
     wget                                               # Downloading files from URL in terminal.
-    iwd                                                # WPA_Supplicant alternative.
     unzip                                              # Enable unzipping files.
     unrar                                              # Enable extracting files from rar files.
     xclip                                              # Copy/Paste in XOrg terminal.
     wl-clipboard                                       # Copy/Paste in wayland terminal.
     gnumake                                            # Controls the generation of executable files.
     ffmpeg                                             # Library + Programs for management of multimedia files and streams.
-    fish                                               # Shell with better defaults.
     pwgen                                              # Password generator.
     ripgrep                                            # faster grep.
     skim                                               # faster fzf.
@@ -25,6 +23,5 @@
     winetricks                                         # Install required DLL to escape exe trouble.
     tree-sitter                                        # Parser generator + incremental parsing lib.
     starship                                           # Minimal + customizable prompt.
-    pipewire                                           # Multimedia pipeline API.
   ];
 }
