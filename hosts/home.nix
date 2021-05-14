@@ -14,7 +14,6 @@
 
   nixpkgs = {
     overlays = [
-      (import ../overlays/firefox-overlay.nix)
       (import ../overlays/rust-overlay.nix)
       (import ../overlays/neovim.nix)
     ];

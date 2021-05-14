@@ -19,7 +19,13 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   nixpkgs = {
-    config.allowUnfree = true;
+    overlays = [
+      (import ../overlays/firefox-overlay.nix)
+    ];
+
+    config = {
+      allowUnfree = true;
+    };
   };
 
   # Boot configurations.
@@ -163,7 +169,7 @@
     fish                                                # Shell with better defaults.
     iwd                                                 # WPA_Supplicant alternative.
     pipewire                                            # Multimedia pipeline API.
-    firefox-devedition-bin                              # Firefox + dev-tools enabled.
+    latest.firefox-devedition-bin                       # Firefox + dev-tools enabled.
   ];
 
   # fileSystems = { //fix
