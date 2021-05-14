@@ -169,6 +169,7 @@
     fish                                                # Shell with better defaults.
     iwd                                                 # WPA_Supplicant alternative.
     pipewire                                            # Multimedia pipeline API.
+    git                                                 # Tool for git usage.
     latest.firefox-devedition-bin                       # Firefox + dev-tools enabled.
   ];
 
