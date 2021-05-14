@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     # Configurations
@@ -29,6 +29,7 @@
     man.enable   = true;
     info.enable  = true;
     adb.enable   = true;
+    dconf.enable = true;
   };
 
   # Set nixpkgs options (for home-manager installed packages only).
