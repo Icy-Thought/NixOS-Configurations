@@ -217,6 +217,11 @@
     dbus.packages = [ pkgs.gnome.dconf ];
     udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
 
+    mpd = {
+      enable = true;
+      extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
+    };
+
   };
 
   environment.systemPackages = with pkgs; [
