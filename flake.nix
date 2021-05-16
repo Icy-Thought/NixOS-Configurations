@@ -104,7 +104,7 @@
           # nixos-hardware.nixosModules.lenovo-thinkpad-e595
         ];
 
-        nixpkgs.overlays = [
+        overlays = [
           inputs = {
             neovim-nightly.overlay
             # emacs-overlay.overlay
