@@ -44,15 +44,16 @@
       keep-derivations = true
     '';
 
-      # Automate garbage collection
-      gc = {
-        automatic = true;
-        dates     = "weekly";
-        options   = "--delete-older-than 7d";
-      };
+    # Automate garbage collection
+    gc = {
+      automatic = true;
+      dates     = "weekly";
+      options   = "--delete-older-than 7d";
+    };
 
-      # Required by Cachix to be used as non-root user
-      trustedUsers = [ "root" "sirius" ];
+    # Required by Cachix to be used as non-root user
+    trustedUsers = [ "root" "sirius" ];
+
   };
 
   # Boot configurations.
