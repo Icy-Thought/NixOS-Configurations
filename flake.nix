@@ -26,7 +26,7 @@
     agenix = {
       type = "github";
       owner = "ryantm";
-      repo = "agenix"
+      repo = "agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
