@@ -71,7 +71,7 @@
 
   };
 
-  outputs = @inputs{ 
+  outputs = inputs@{ 
     self, 
     nixpkgs,
     home-manager,
@@ -80,7 +80,6 @@
     neovim-overlay,
     # emacs-overlay,
     ... 
-
   }: 
 
   let
