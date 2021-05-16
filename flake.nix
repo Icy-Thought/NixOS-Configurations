@@ -71,15 +71,18 @@
 
   };
 
-  outputs = inputs@{ 
-    self, 
-    nixpkgs,
-    home-manager,
-    agenix,
-    rust-overlay,
-    neovim-overlay,
-    # emacs-overlay,
-    ... 
+  outputs = inputs@{ self
+    , nixpkgs
+    , home-manager
+    , flake-utils
+    , agenix
+    , neovim-nightly
+    , rust-overlay
+    , naersk
+    , neovim-overlay
+    # , emacs-overlay
+    # , nixos-hardware
+    , ... 
   }: 
 
   let
@@ -92,6 +95,11 @@
     hmImports = [
       ./home/home.nix
     ];
+
+    hosts = {
+      ProBook.modules = [ ./hosts/ProBook/configuration.nix ];
+      ThinkPad.modules = [ ./hosts/ThinkPad/configuration.nix ];
+    }
 
     nixosModules = (hostname: [
       nixpkgs.nixosModules.notDetected
