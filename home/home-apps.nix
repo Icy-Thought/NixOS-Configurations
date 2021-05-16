@@ -127,3 +127,21 @@ let
     tree-sitter                                        # Parser generator + incremental parsing lib.
     starship                                           # Minimal + customizable prompt.
   ];
+
+in {
+  config = lib.mkIf cfg.enable {
+    home.packages = builtins.concatLists [
+       deskPack
+       appPack
+       editorPack
+       gamePack
+       langPack
+       spellPack
+       gnomePack
+       nixPack
+       tuiPack
+       utilsPack
+    ];
+  };
+
+}

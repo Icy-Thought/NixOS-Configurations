@@ -96,11 +96,6 @@
       ./home/home.nix
     ];
 
-    hosts = {
-      ProBook.modules = [ ./hosts/ProBook/configuration.nix ];
-      ThinkPad.modules = [ ./hosts/ThinkPad/configuration.nix ];
-    };
-
     nixosModules = (hostname: [
       nixpkgs.nixosModules.notDetected
       home-manager.nixosModules.home-manager
@@ -108,7 +103,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.sirius = {
-          import = hmImports ++ [ (./. + "home/${hostname}.hm.nix") ];
+          import = hmImports ++ [ (./. + "/hosts/${hostname}.hm.nix") ];
         };
       })
     ]);

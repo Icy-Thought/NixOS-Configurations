@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hw-config/ThinkPad.nix
     ];
 
   # This value determines the NixOS release from which the default
