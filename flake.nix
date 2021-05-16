@@ -144,4 +144,5 @@
       in
       utils.buildNixosConfigurations fullyQualifiedDirs;
 
-  }
+  };
+}
