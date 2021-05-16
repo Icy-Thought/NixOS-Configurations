@@ -8,7 +8,7 @@
     ]
   };
 
-  nixpkgs.overlays = [ inputs.emacs.overlay ];
+  # nixpkgs.overlays = [ inputs.emacs.overlay ];
   
   services.emacs = {
     enable = true;

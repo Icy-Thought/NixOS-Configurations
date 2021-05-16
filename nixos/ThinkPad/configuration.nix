@@ -32,9 +32,27 @@
 
   nix = {
     package = pkgs.nixUnstable;
+
+    # Automate `nix-store --optimise`
+    autoOptimiseStore = true;
+
     extraOptions = ''
       experimental-features = nix-command flakes
+
+      # Avoid unwanted garbage collection when using nix-direnv
+      keep-outputs     = true
+      keep-derivations = true
     '';
+
+      # Automate garbage collection
+      gc = {
+        automatic = true;
+        dates     = "weekly";
+        options   = "--delete-older-than 7d";
+      };
+
+      # Required by Cachix to be used as non-root user
+      trustedUsers = [ "root" "sirius" ];
   };
 
   # Boot configurations.
@@ -251,27 +269,4 @@
       isNormalUser = true;
     };
   };
-
-  # Nix daemon config
-  nix = {
-    # Automate `nix-store --optimise`
-    autoOptimiseStore = true;
-
-    # Automate garbage collection
-    gc = {
-      automatic = true;
-      dates     = "weekly";
-      options   = "--delete-older-than 7d";
-    };
-
-    # Avoid unwanted garbage collection when using nix-direnv
-    extraOptions = ''
-      keep-outputs     = true
-      keep-derivations = true
-   '';
-
-    # Required by Cachix to be used as non-root user
-    trustedUsers = [ "root" "sirius" ];
-  };
 }
-

@@ -48,12 +48,12 @@
     #   flake = false;
     # };
 
-    emacs-overlay = {
-      type = "github";
-      owner = "nix-community";
-      repo = "emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # emacs-overlay = {
+    #   type = "github";
+    #   owner = "nix-community";
+    #   repo = "emacs-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     neovim-nightly = {
       type = "github";
@@ -107,7 +107,7 @@
         nixpkgs.overlays = [
           inputs = {
             neovim-nightly.overlay
-            emacs-overlay.overlay
+            # emacs-overlay.overlay
             # nur.overlay
           };
         ];
