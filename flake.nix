@@ -99,7 +99,7 @@
     hosts = {
       ProBook.modules = [ ./hosts/ProBook/configuration.nix ];
       ThinkPad.modules = [ ./hosts/ThinkPad/configuration.nix ];
-    }
+    };
 
     nixosModules = (hostname: [
       nixpkgs.nixosModules.notDetected
