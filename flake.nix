@@ -91,7 +91,13 @@
     system = "x86_64-linux";
     stable-pkgs = import ./overlays;
     
+    utils = import ./utility-functions.nix {
+      inherit lib system pkgs inputs self;
+      nixosModules = nixosModules;
+    };
+
     pkgs = (utils.pkgImport nixpkgs overlays);
+    
     hmImports = [
       ./home/home.nix
     ];
