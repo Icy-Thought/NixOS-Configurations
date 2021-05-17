@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly = {
+    neovim-nightly-overlay = {
       type = "github";
       owner = "nix-community";
       repo = "neovim-nightly-overlay";
@@ -116,6 +116,7 @@
 
     overlays = [
       stable-pkgs
+      inputs.neovim-nightly-overlay.overlay
       # emacs-overlay.overlay
     ];
 
