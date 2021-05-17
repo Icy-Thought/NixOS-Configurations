@@ -76,10 +76,9 @@
     , home-manager
     , flake-utils
     , agenix
-    , neovim-nightly
+    # , neovim-nightly-overlay
     , rust-overlay
     , naersk
-    , neovim-overlay
     # , emacs-overlay
     # , nixos-hardware
     , ... 
