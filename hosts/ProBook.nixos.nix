@@ -9,6 +9,17 @@
   # Build NixOS from latest stable release.
   system.stateVersion = "20.09"; # Did you read the comment?
 
+  nixpkgs = {
+    overlays = [
+      (import ../../overlays/firefox-overlay.nix)
+    ];
+
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+
   nix = {
     package = pkgs.nixUnstable;
 
@@ -202,7 +213,7 @@
     ];
 
     mpd = {
-      enable = true;
+      enable = false;
       extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
     };
 
