@@ -1,7 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-
   defaultPkgs = with pkgs; [
     # pop-os-shell                                      # Gnome Tiling Manager.
     zathura                                             # Minimal PDF/EPUB/DJUV/.. reader.
@@ -128,18 +127,16 @@ let
   ];
 
 in {
-    home.packages = builtins.concatLists [
-       defaultPkgs
-       extraPkgs
-       editorPkgs
-       gamingPkgs
-       langPkgs
-       spellPkgs
-       gnomePkgs
-       nixPkgs
-       tuiPkgs
-       utilsPkgs
-    ];
-  };
-
-}
+  home.packages = builtins.concatLists [
+     defaultPkgs
+     extraPkgs
+     editorPkgs
+     gamingPkgs
+     langPkgs
+     spellPkgs
+     gnomePkgs
+     nixPkgs
+     tuiPkgs
+     utilsPkgs
+  ];
+};
