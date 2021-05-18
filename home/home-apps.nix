@@ -25,7 +25,7 @@ let
     freetube                                            # FOSS private YT app.
     foliate                                             # Minimal E-Book reader.
     zoom-us                                             # Conferencing application..
-    heimdall-gui                                        # GUI for Heimdall (see tuiPkgs).
+    heimdall-gui                                        # Suit to flash Android firmware.
     anki                                                # Spaced repetition flashcard.
   ];
 
@@ -118,7 +118,6 @@ let
     # spotify-tui                                         # TUI for premium Spotify users.
     # speedtest-cli                                       # TUI Speedtest.
     youtube-dl                                          # YouTube media downloader.
-    heimdall                                            # Suit to flash Android firmware.
   ];
 
   gamingPkgs = with pkgs; [
