@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -21,15 +21,13 @@
 
 
   nix = {
-    package = with pkgs; [ 
-      nixUnstable
-      nixFlakes
-    ];
+    package = pkgs.nixFlakes;
 
     # Automate `nix-store --optimise`
     autoOptimiseStore = true;
 
-    extraOptions = ''
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+    ''
       experimental-features = nix-command flakes
 
       # Avoid unwanted garbage collection when using nix-direnv
@@ -234,8 +232,11 @@
   ];
 
   programs = {
-    man.enable   = true;
-    info.enable  = true;
+    documentation = {
+      man.enable   = true;
+      info.enable  = true;
+    };
+
     adb.enable   = true;
     dconf.enable = true;
   };
