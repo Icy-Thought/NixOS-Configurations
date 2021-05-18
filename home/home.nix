@@ -2,13 +2,13 @@
 {
   imports = [
     ./home-apps.nix
-    ./fish.nix
-    ./alacritty.nix
-    ./emacs.nix
-    ./neovim.nix
-    ./git.nix
-    # ./gnome.nix
-    ./zathura.nix
+    ./modules/fish.nix
+    ./modules/alacritty.nix
+    ./modules/emacs.nix
+    ./modules/neovim.nix
+    ./modules/git.nix
+    # ./modules/gnome.nix
+    ./modules/zathura.nix
   ];
 
   nixpkgs = {

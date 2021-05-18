@@ -3,7 +3,7 @@
 {
   programs.fish = {
     enable = true;
-    shellInit = builtins.readFile ./config/fish/config.fish;
+    shellInit = builtins.readFile ../config/fish/config.fish;
     shellAliases = {
 
       # General
