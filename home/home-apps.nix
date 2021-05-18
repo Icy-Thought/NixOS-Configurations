@@ -29,8 +29,27 @@ let
     zoom-us                                             # Conferencing application..
   ];
 
+  gitPkgs = with pkgs.gitAndTools; [
+    diff-so-fancy                                       # Colored git diff.
+    git-crypt                                           # git file encryption.
+    hub                                                 # github TUI client.
+    tig                                                 # diff and commit view.
+  ];
+
+  editorPkgs = with pkgs; [
+    gnuplot                                             # Plotting through programming.
+    neovim-nightly                                      # Neovim + Lua support.
+    tmux                                                # Terminal multiplexer.
+  ];
+
+  gnomePkgs = with pkgs; [
+    gnome.gnome-tweak-tool                              # Advance Gnome setting control.
+    # gnomeExtensions.appindicator                      # Enables systray icons.
+    # gnomeExtensions.gsconnect                         # KDE Connect for Gnome.
+  ];
+
   langPkgs = with pkgs; [
-    rustChannels.nightly                                # Rust compiler.
+    rust-nightly                                        # Rust compiler.
     rust-analyzer                                       # Rust-Analyzer for better rust completion.
     languagetool                                        # Proofreading (grammar checker) for several languages.
     ccls                                                # C/C++ language server powered by clang.
@@ -40,32 +59,6 @@ let
     nodePackages.javascript-typescript-langserver       # Javascript support.
     podman                                              # Docker alternative.
     hugo                                                # Fast + Modern static web-engine.
-  ];
-
-  editorPkgs = with pkgs; [
-    gnuplot                                             # Plotting through programming.
-    neovim-nightly                                      # Neovim + Lua support.
-    tmux                                                # Terminal multiplexer.
-  ];
-
-  gamingPkgs = with pkgs; [
-    wine-staging                                        # Latest Wine package.
-    steam                                               # Gaming platform.
-    lutris                                              # WINE gaming platform.
-    osu-lazer                                           # FOSS Rythm game!
-  ];
-
-  gitPkgs = with pkgs.gitAndTools; [
-    diff-so-fancy                                       # Colored git diff.
-    git-crypt                                           # git file encryption.
-    hub                                                 # github TUI client.
-    tig                                                 # diff and commit view.
-  ];
-
-  gnomePkgs = with pkgs; [
-    gnome.gnome-tweak-tool                              # Advance Gnome setting control.
-    # gnomeExtensions.appindicator                      # Enables systray icons.
-    # gnomeExtensions.gsconnect                         # KDE Connect for Gnome.
   ];
 
   spellPkgs = with pkgs; [
@@ -85,18 +78,7 @@ let
     nix-top
     nixpkgs-fmt
   ];
-
-  tuiPkgs = with pkgs; [
-    neofetch                                           # Fetch system information.
-    htop                                               # Monitor current processes.
-    # mpd                                                # Media player daemon.
-    # ncmpcpp                                            # TUI music player.
-    # spotify-tui                                        # TUI for premium Spotify users.
-    # speedtest-cli                                      # TUI Speedtest.
-    youtube-dl                                         # YouTube media downloader.
-    nnn                                                # TUI file manager.
-  ];
-    
+   
   utilsPkgs = with pkgs; [
     any-nix-shell                                      # Fish/ZSH support for nix-shell.
     uutils-coreutils                                   # Rust Rewrite of GNU-coreutils.
@@ -120,6 +102,24 @@ let
     winetricks                                         # Install required DLL to escape exe trouble.
     tree-sitter                                        # Parser generator + incremental parsing lib.
     starship                                           # Minimal + customizable prompt.
+  ];
+
+  tuiPkgs = with pkgs; [
+    neofetch                                           # Fetch system information.
+    htop                                               # Monitor current processes.
+    # mpd                                                # Media player daemon.
+    # ncmpcpp                                            # TUI music player.
+    # spotify-tui                                        # TUI for premium Spotify users.
+    # speedtest-cli                                      # TUI Speedtest.
+    youtube-dl                                         # YouTube media downloader.
+    nnn                                                # TUI file manager.
+  ];
+
+  gamingPkgs = with pkgs; [
+    wine-staging                                       # Latest Wine package.
+    steam                                              # Gaming platform.
+    lutris                                             # WINE gaming platform.
+    osu-lazer                                          # FOSS Rythm game!
   ];
 
 in {
