@@ -128,7 +128,6 @@ let
   ];
 
 in {
-  config = lib.mkIf cfg.enable {
     home.packages = builtins.concatLists [
        defaultPkgs
        extraPkgs
