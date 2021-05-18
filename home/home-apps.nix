@@ -58,7 +58,7 @@ let
     osu-lazer                                           # FOSS Rythm game!
   ];
 
-  gitPkgs = with pkgs; [
+  gitPkgs = with pkgs.gitAndTools; [
     diff-so-fancy                                       # Colored git diff.
     git-crpt                                            # git file encryption.
     hub                                                 # github TUI client.
@@ -129,13 +129,14 @@ in {
   home.packages = builtins.concatLists [
      defaultPkgs
      extraPkgs
+     gitPkgs
      editorPkgs
-     gamingPkgs
+     gnomePkgs
      langPkgs
      spellPkgs
-     gnomePkgs
      nixPkgs
-     tuiPkgs
      utilsPkgs
+     tuiPkgs
+     gamingPkgs
   ];
 }
