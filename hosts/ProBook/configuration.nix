@@ -21,7 +21,10 @@
 
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = with pkgs; [ 
+      nixUnstable
+      nixFlakes
+    ];
 
     # Automate `nix-store --optimise`
     autoOptimiseStore = true;
