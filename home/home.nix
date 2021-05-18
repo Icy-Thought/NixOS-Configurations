@@ -42,7 +42,7 @@
     direnv = {
       enable = true;
       enableFishIntegration = true;
-      enableNixIntegration = true;
+      enableNixDirenvIntegration = true;
     };
 
   };
