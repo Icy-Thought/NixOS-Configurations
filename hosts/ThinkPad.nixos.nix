@@ -219,8 +219,13 @@
       # desktopManager.plasma5.enable = true;
     };
 
-    dbus.packages = [ pkgs.gnome.dconf ];
-    udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+    dbus.packages = with pkgs; [ 
+      gnome.dconf 
+    ];
+
+    udev.packages = with pkgs; [ 
+      gnome.gnome-settings-daemon 
+    ];
 
     mpd = {
       enable = true;
@@ -244,6 +249,14 @@
     variables = {
       VK_ICD_FILENAMES = [ "/run/opengl-driver/share/vulkan/icd.d/amd_icd64.json" ];
     };
+  };
+
+  programs = {
+    man.enable   = true;
+    info.enable  = true;
+    gpg.enable   = true;
+    adb.enable   = true;
+    dconf.enable = true;
   };
 
   # fileSystems = { //fix

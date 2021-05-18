@@ -193,8 +193,13 @@
       # desktopManager.plasma5.enable = true;
     };
 
-    dbus.packages = [ pkgs.gnome.dconf ];
-    udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+    dbus.packages = with pkgs; [ 
+      gnome.dconf 
+    ];
+
+    udev.packages = with pkgs; [ 
+      gnome.gnome-settings-daemon 
+    ];
 
     mpd = {
       enable = true;
@@ -213,6 +218,14 @@
     git                                                 # Tool for git usage.
     latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
   ];
+
+  programs = {
+    man.enable   = true;
+    info.enable  = true;
+    gpg.enable   = true;
+    adb.enable   = true;
+    dconf.enable = true;
+  };
 
   # fileSystems = { //fix
   #   "/".options = [ "noatime,x-gvfs-hide" ];

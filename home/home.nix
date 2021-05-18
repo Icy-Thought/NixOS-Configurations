@@ -25,12 +25,9 @@
   }; 
 
   programs = {
-    home-manager.enable = true;
-    man.enable   = true;
-    info.enable  = true;
-    adb.enable   = true;
-    dconf.enable = true;
-    gpg.enable   = true;
+    home-manager = {
+      enable = true;
+    };
 
     tmux = {
       enable = true;
