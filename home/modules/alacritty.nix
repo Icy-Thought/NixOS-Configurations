@@ -119,7 +119,7 @@
       ];
 
       mouse_bindings = [
-        { mouse = "Middle";         actions = "PasteSelection"; }
+        { mouse = "Middle";         action = "PasteSelection"; }
       ];
 
       url = {

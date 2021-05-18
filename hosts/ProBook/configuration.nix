@@ -221,6 +221,10 @@
       gnome.gnome-settings-daemon 
     ];
 
+    gvfs = {
+      enable = true;
+    };
+
     mpd = {
       enable = false;
       extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
@@ -250,14 +254,22 @@
     dconf.enable = true;
   };
 
-  # fileSystems = { //fix
-  #   "/".options = [ "noatime,x-gvfs-hide" ];
-  #   "/boot/".options = [ "noatime,x-gvfs-hide" ];
-  # };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
+      fsType = "ext4";
+      options = [ "noatime" "x-gvfs-hide" ];
+    };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+    "/boot" = {
+      device = "/dev/disk/by-uuid/9C99-45AA";
+      fsType = "vfat";
+      options = [ "noatime" "x-gvfs-hide" ];
+    };
+  };
+
   users = {
-    defaultUserShell = pkgs.bash;
+    # defaultUserShell = pkgs.fish;
     mutableUsers = false;
 
     users.root = {
