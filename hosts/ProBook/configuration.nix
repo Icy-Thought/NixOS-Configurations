@@ -252,18 +252,19 @@
   programs = {
     adb.enable   = true;
     dconf.enable = true;
+    fish.enable  = true;
   };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
     fsType = "ext4";
-    options = [ "noatime" "x-gvfs-hide" ];
+    options = [ "noatime, x-gvfs-hide" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9C99-45AA";
     fsType = "vfat";
-    options = [ "noatime" "x-gvfs-hide" ];
+    options = [ "noatime, x-gvfs-hide" ];
   };
 
   users = {
@@ -279,7 +280,7 @@
       isNormalUser = true;
       home = "/home/sirius";
       extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
-      shell = "/usr/bin/fish";
+      shell = pkgs.fish;
       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
     };
 
@@ -287,7 +288,7 @@
       isNormalUser = true;
       home = "/home/orca";
       extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
-      shell = "/usr/bin/fish";
+      shell = pkgs.fish;
       initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
     };
   };
