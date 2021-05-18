@@ -240,12 +240,12 @@
     };
   };
 
-  programs = {
-    documentation = {
-      man.enable   = true;
-      info.enable  = true;
-    };
+  documentation = {
+    man.enable   = true;
+    info.enable  = true;
+  };
 
+  programs = {
     adb.enable   = true;
     dconf.enable = true;
   };
