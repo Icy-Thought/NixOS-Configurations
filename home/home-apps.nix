@@ -123,16 +123,16 @@ let
   ];
 
 in {
-  home.packages = {
+  home.packages = builtins.concatLists [
     defaultPkgs 
-    ++ gitPkgs 
-    ++ editorPkgs 
-    ++ gnomePkgs 
-    ++ langPkgs 
-    ++ spellPkgs 
-    ++ nixPkgs 
-    ++ utilsPkgs 
-    ++ tuiPkgs 
-    ++ gamingPkgs;
-  };
+    gitPkgs 
+    editorPkgs 
+    gnomePkgs 
+    langPkgs 
+    spellPkgs 
+    nixPkgs 
+    utilsPkgs 
+    tuiPkgs 
+    gamingPkgs
+  ];
 }
