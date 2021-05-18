@@ -60,7 +60,7 @@ let
 
   gitPkgs = with pkgs.gitAndTools; [
     diff-so-fancy                                       # Colored git diff.
-    git-crpt                                            # git file encryption.
+    git-crypt                                           # git file encryption.
     hub                                                 # github TUI client.
     tig                                                 # diff and commit view.
   ];
