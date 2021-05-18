@@ -1,9 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  cfg = config.profiles.dev;
 
-  deskPack = with pkgs; [
+  defaultPkgs = with pkgs; [
     # pop-os-shell                                      # Gnome Tiling Manager.
     zathura                                             # Minimal PDF/EPUB/DJUV/.. reader.
     alacritty                                           # Rust-based Terminal.
@@ -13,7 +12,7 @@ let
     # Polychromatic                                     # GUI to control OpenRazer.
   ];
 
-  appPack = with pkgs; [
+  extraPkgs= with pkgs; [
     mpv                                                 # Media Player.
     celluloid                                           # GTK frontend for MPV.
     gimp                                                # The better Photoshop alternative.
@@ -34,7 +33,7 @@ let
     zoom-us                                             # Conferencing application..
   ];
 
-  langPack = with pkgs; [
+  langPkgs = with pkgs; [
     latest.rustChannels.nightly.rust                    # Rust compiler.
     unstable.rust-analyzer                              # Rust-Analyzer for better rust completion.
     languagetool                                        # Proofreading (grammar checker) for several languages.
@@ -47,34 +46,34 @@ let
     hugo                                                # Fast + Modern static web-engine.
   ];
 
-  editorPack = with pkgs; [
+  editorPkgs = with pkgs; [
     doom-emacs                                          # Emacs + Doom support.
     gnuplot                                             # Plotting through programming.
     neovim-nightly                                      # Neovim + Lua support.
     tmux                                                # Terminal multiplexer.
   ];
 
-  gamePack = with pkgs; [
+  gamingPkgs = with pkgs; [
     wine-staging                                        # Latest Wine package.
     steam                                               # Gaming platform.
     lutris                                              # WINE gaming platform.
     osu-lazer                                           # FOSS Rythm game!
   ];
 
-  gitPack = with pkgs; [
+  gitPkgs = with pkgs; [
     diff-so-fancy                                       # Colored git diff.
     git-crpt                                            # git file encryption.
     hub                                                 # github TUI client.
     tig                                                 # diff and commit view.
   ];
 
-  gnomePack = with pkgs; [
+  gnomePkgs = with pkgs; [
     gnome.gnome-tweak-tool                              # Advance Gnome setting control.
     # gnomeExtensions.appindicator                      # Enables systray icons.
     # gnomeExtensions.gsconnect                         # KDE Connect for Gnome.
   ];
 
-  spellPack = with pkgs; [
+  spellPkgs = with pkgs; [
     aspellDicts.en
     aspellDicts.sv
     hunspellDicts.sv_SE
@@ -84,7 +83,7 @@ let
     libpinyin
   ];
 
-  nixPack = with pkgs; [
+  nixPkgs = with pkgs; [
     hydra-check
     nix-prefetch-github
     nixpkgs-review
@@ -92,7 +91,7 @@ let
     nixpkgs-fmt
   ];
 
-  tuiPack = with pkgs; [
+  tuiPkgs = with pkgs; [
     neofetch                                           # Fetch system information.
     htop                                               # Monitor current processes.
     # mpd                                                # Media player daemon.
@@ -103,7 +102,7 @@ let
     nnn                                                # TUI file manager.
   ];
     
-  utilsPack = with pkgs; [
+  utilsPkgs = with pkgs; [
     any-nix-shell                                      # Fish/ZSH support for nix-shell.
     uutils-coreutils                                   # Rust Rewrite of GNU-coreutils.
     gnupg                                              # Encrypt/Decrypt software.
@@ -131,16 +130,16 @@ let
 in {
   config = lib.mkIf cfg.enable {
     home.packages = builtins.concatLists [
-       deskPack
-       appPack
-       editorPack
-       gamePack
-       langPack
-       spellPack
-       gnomePack
-       nixPack
-       tuiPack
-       utilsPack
+       defaultPkgs
+       extraPkgs
+       editorPkgs
+       gamingPkgs
+       langPkgs
+       spellPkgs
+       gnomePkgs
+       nixPkgs
+       tuiPkgs
+       utilsPkgs
     ];
   };
 
