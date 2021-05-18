@@ -6,6 +6,8 @@
     ./alacritty.nix
     ./emacs.nix
     ./neovim.nix
+    ./git.nix
+    # ./gnome.nix
     ./zathura.nix
   ];
 
@@ -28,6 +30,7 @@
     info.enable  = true;
     adb.enable   = true;
     dconf.enable = true;
+    gpg.enable   = true;
 
     tmux = {
       enable = true;
@@ -39,11 +42,23 @@
       terminal = "screen-256color";
     };
 
+    direnv = {
+      enable = true;
+      enableFishIntegration = true;
+      enableNixIntegration = true;
+    };
+
   };
 
   # Set nixpkgs options (for home-manager installed packages only).
-  fonts.fontconfig.enable = true;
+  fonts = {
+    fontconfig = {
+      enable = true;
+    };
+  };
 
-  # xdg.portal.enable = true;
+  # xdg.portal = {
+  #   enable = true;
+  # };
 
 }

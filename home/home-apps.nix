@@ -62,10 +62,10 @@ let
   ];
 
   gitPack = with pkgs; [
-    diff-so-fancy
-    git-crpt
-    hub
-    tig
+    diff-so-fancy                                       # Colored git diff.
+    git-crpt                                            # git file encryption.
+    hub                                                 # github TUI client.
+    tig                                                 # diff and commit view.
   ];
 
   gnomePack = with pkgs; [
