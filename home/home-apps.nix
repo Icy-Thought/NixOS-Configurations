@@ -139,4 +139,4 @@ in {
      tuiPkgs
      utilsPkgs
   ];
-};
+}
