@@ -2,7 +2,7 @@
 {
   programs.zathura = {
     enable = true;
-    settings = {
+    options = {
       font = "Iosevka Bold 10";
       selection-clipboard = "clipboard";
       first-page-column = "1:1";
