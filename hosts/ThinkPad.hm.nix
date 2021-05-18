@@ -1,11 +1,15 @@
 { ... }
 {
+  imports = [
+    ../home/home.nix
+  ];
+
   profiles = {
     git = {
       enable = true;
-      userName = "Icy_Thought";
+      userName = "Icy-Thought";
       userEmail = "gilganyx@gmail.com";
-      extraConfig.github.user = "Icy_thought";
+      extraConfig.github.user = "Icy-thought";
       # extraConfig.core.excludesfile = builtins.toString ./gitignore_global;
     };
 

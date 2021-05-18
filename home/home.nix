@@ -13,6 +13,13 @@
     config = {
       allowUnfree = true;  
     };
+
+    overlays = [
+      (import ../overlays/firefox-overlay.nix)
+      (import ../overlays/rust-overlay.nix)
+      (import ../overlays/neovim-nightly-overlay.nix)
+      # (import ../overlays/emacs-overlay.nix)
+    ];
   }; 
 
   programs = {
