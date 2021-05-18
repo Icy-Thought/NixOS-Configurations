@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hw-config/ProBook.nix
+      ./ProBook.nix
     ];
 
   # Build NixOS from latest stable release.
