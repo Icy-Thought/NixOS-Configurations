@@ -33,8 +33,8 @@ let
   ];
 
   langPkgs = with pkgs; [
-    latest.rustChannels.nightly                         # Rust compiler.
-    unstable.rust-analyzer                              # Rust-Analyzer for better rust completion.
+    rustChannels.nightly                                # Rust compiler.
+    rust-analyzer                                       # Rust-Analyzer for better rust completion.
     languagetool                                        # Proofreading (grammar checker) for several languages.
     ccls                                                # C/C++ language server powered by clang.
     cmake                                               # Automated build automation, testing & packaging software.
@@ -47,7 +47,7 @@ let
 
   editorPkgs = with pkgs; [
     gnuplot                                             # Plotting through programming.
-    neovim-nightly                                      # Neovim + Lua support.
+    nvimNightly                                         # Neovim + Lua support.
     tmux                                                # Terminal multiplexer.
   ];
 

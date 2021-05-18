@@ -8,5 +8,5 @@ let
 
 in
 {
-  emacs.unstable = self.callPackage (import source) {};
+  emacsUnstable = self.callPackage (import source) {};
 }

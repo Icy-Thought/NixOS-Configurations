@@ -8,5 +8,5 @@ let
 
 in
 {
-  neovim.nightly = self.callPackage (import source) {};
+  nvimNightly = self.callPackage (import source) {};
 }
