@@ -6,7 +6,7 @@
       font = "Iosevka Bold 10";
       selection-clipboard = "clipboard";
       first-page-column = "1:1";
-      adjust-open = width;
+      adjust-open = "width";
       window-title-basename = true;
 
       # Base16 Gruvbox - morhetz
