@@ -9,9 +9,6 @@ let
     latest.firefox-nightly-bin                          # Latest Firefox edition.
     openrazer-daemon                                    # Control your razer hardware.
     # Polychromatic                                     # GUI to control OpenRazer.
-  ];
-
-  extraPkgs= with pkgs; [
     mpv                                                 # Media Player.
     celluloid                                           # GTK frontend for MPV.
     gimp                                                # The better Photoshop alternative.
