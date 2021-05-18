@@ -3,7 +3,7 @@
 {
   programs.fish = {
     enable = true;
-    shellInit = builtins.readFile ./config/config.fish;
+    shellInit = builtins.readFile ./config/fish/config.fish;
     shellAliases = {
 
       # General
@@ -37,9 +37,7 @@
   };
 
   home.packages = with pkgs; [
-
-    # Prompt
-    starship
+    starship                                    # Minimal prompt for fish/zsh/bash shell.
   ];
 
 }
