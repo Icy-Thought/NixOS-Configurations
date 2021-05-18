@@ -254,18 +254,16 @@
     dconf.enable = true;
   };
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
-      fsType = "ext4";
-      options = [ "noatime" "x-gvfs-hide" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
+    fsType = "ext4";
+    options = [ "noatime" "x-gvfs-hide" ];
+  };
 
-    "/boot" = {
-      device = "/dev/disk/by-uuid/9C99-45AA";
-      fsType = "vfat";
-      options = [ "noatime" "x-gvfs-hide" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/9C99-45AA";
+    fsType = "vfat";
+    options = [ "noatime" "x-gvfs-hide" ];
   };
 
   users = {
@@ -275,21 +273,22 @@
     users.root = {
        initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
        shell = pkgs.fish;
-       packages = with pkgs; [ (neovim.override { viAlias = true; vimAlias = true; withNodeJs = true;}) ];
     };
 
     users.sirius = {
-      initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
-      shell = pkgs.fish;
       isNormalUser = true;
+      home = "/home/sirius";
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
+      shell = "/usr/bin/fish";
+      initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
     };
 
     users.orca = {
-      initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
-      shell = pkgs.fish;
       isNormalUser = true;
+      home = "/home/orca";
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
+      shell = "/usr/bin/fish";
+      initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
     };
   };
 }
