@@ -125,7 +125,6 @@ let
 in {
   home.packages = builtins.concatLists [
      defaultPkgs
-     extraPkgs
      gitPkgs
      editorPkgs
      gnomePkgs
