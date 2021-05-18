@@ -2,11 +2,11 @@ self: super:
 
 let
   source = builtins.fetchTarball {
-    name = "rust-overlay";
+    name = "rust-nightly";
     url = "https://github.com/oxalica/rust-overlay/archive/master.tar.gz";
   };
 
 in
 {
-  rust-overlay = self.callPackage (import source) {};
+  rustChannels.nightly = self.callPackage (import source) {};
 }

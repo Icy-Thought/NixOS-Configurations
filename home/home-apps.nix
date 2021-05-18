@@ -24,7 +24,7 @@ let
     signal-desktop                                      # More secure WhatsApp alternative.
     fractal                                             # Rust-based matrix client.
     # gnome.geary                                         # Gnome 2nd E-Mail client.
-    gnome.polari                                      # Gnome IRC client.
+    gnome.polari                                        # Gnome IRC client.
     easytag                                             # M3U Editor.
     transmission-gtk                                    # BitTorrent Client.
     freetube                                            # FOSS private YT app.
@@ -33,7 +33,7 @@ let
   ];
 
   langPkgs = with pkgs; [
-    latest.rustChannels.nightly.rust                    # Rust compiler.
+    latest.rustChannels.nightly                         # Rust compiler.
     unstable.rust-analyzer                              # Rust-Analyzer for better rust completion.
     languagetool                                        # Proofreading (grammar checker) for several languages.
     ccls                                                # C/C++ language server powered by clang.

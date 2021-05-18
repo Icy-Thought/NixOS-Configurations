@@ -8,5 +8,5 @@ let
 
 in
 {
-  emacs-overlay = self.callPackage (import source) {};
+  emacs.unstable = self.callPackage (import source) {};
 }
