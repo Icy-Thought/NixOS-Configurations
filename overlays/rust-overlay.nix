@@ -1,4 +1,4 @@
 import (builtins.fetchTarball {
-  name = "rustChannels.nightly";
+  name = "rust-nightly";
   url = https://github.com/oxalica/rust-overlay/archive/master.tar.gz;
 })

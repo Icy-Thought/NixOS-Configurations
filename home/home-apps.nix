@@ -49,7 +49,7 @@ let
   ];
 
   langPkgs = with pkgs; [
-    rust-nightly                                        # Rust compiler.
+    rust-bin.nightly.latest.default                     # Latest Rust compiler.
     rust-analyzer                                       # Rust-Analyzer for better rust completion.
     languagetool                                        # Proofreading (grammar checker) for several languages.
     ccls                                                # C/C++ language server powered by clang.
