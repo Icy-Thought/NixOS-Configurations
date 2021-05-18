@@ -2,14 +2,11 @@
 {
   programs.emacs = {
     enable = true;
+    # package = pkgs.emacsUnstable;
+    extraPackages = (epkgs: [ epkgs.vterm ] );
   };
 
   services.emacs = {
     enable = true;
-    package = with pkgs; [
-      # emacsUnstable
-      emacsWithPackages (epkgs: [ epkgs.vterm ])
-    ];
-
   };
 }
