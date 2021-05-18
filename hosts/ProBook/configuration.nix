@@ -127,7 +127,15 @@
     };
   };
 
-  # Enable X11 + CUPS + Flatpak.
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+    };
+  };
+
   services = {
     pipewire = {
       enable = true;
@@ -228,6 +236,7 @@
     iwd                                                 # WPA_Supplicant alternative.
     pipewire                                            # Multimedia pipeline API.
     git                                                 # Tool for git usage.
+    podman                                              # Docker alternative.
     latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
   ];
 

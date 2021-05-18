@@ -109,13 +109,13 @@
       };
 
       keybindings = [
-        { key = "N";                mods = "Control|Shift";   actions = "SpawnNewInstance"; }
-        { key = "Q";                mods = "Control";         action  = "Quit";             }
-        { key = "V";                mods = "Control|Shift";   actions = "Paste";            }
-        { key = "C";                mods = "Control|Shift";   actions = "Copy";             }
-        { key = "NumpaddAdd";       mods = "Control";         actions = "IncreaseFontSize"; }
-        { key = "NumpadSubtract";   mods = "Control";         actions = "DecreaseFontSize"; }
-        { key = "Key0";             mods = "Control";         actions = "ResetFontSize";    }
+        { key = "N";                mods = "Control|Shift";   action = "SpawnNewInstance"; }
+        { key = "Q";                mods = "Control";         action = "Quit";             }
+        { key = "V";                mods = "Control|Shift";   action = "Paste";            }
+        { key = "C";                mods = "Control|Shift";   action = "Copy";             }
+        { key = "NumpaddAdd";       mods = "Control";         action = "IncreaseFontSize"; }
+        { key = "NumpadSubtract";   mods = "Control";         action = "DecreaseFontSize"; }
+        { key = "Key0";             mods = "Control";         action = "ResetFontSize";    }
       ];
 
       mouse_bindings = [
