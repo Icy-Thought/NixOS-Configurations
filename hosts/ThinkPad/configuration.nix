@@ -243,7 +243,6 @@
   programs = {
     man.enable   = true;
     info.enable  = true;
-    gpg.enable   = true;
     adb.enable   = true;
     dconf.enable = true;
   };

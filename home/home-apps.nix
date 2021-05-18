@@ -44,7 +44,7 @@ let
 
   editorPkgs = with pkgs; [
     gnuplot                                             # Plotting through programming.
-    nvimNightly                                         # Neovim + Lua support.
+    neovim-nightly                                      # Neovim + Lua support.
     tmux                                                # Terminal multiplexer.
   ];
 
