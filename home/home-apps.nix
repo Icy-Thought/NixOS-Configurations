@@ -6,6 +6,7 @@ let
     alacritty                                           # Rust-based Terminal.
     brave                                               # Chromium-based browser.
     latest.firefox-nightly-bin                          # Latest Firefox edition.
+    latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
     openrazer-daemon                                    # Control your razer hardware.
     # Polychromatic                                     # GUI to control OpenRazer.
     mpv                                                 # Media Player.
@@ -44,12 +45,13 @@ let
 
   gnomePkgs = with pkgs; [
     gnome.polari                                        # Gnome IRC client.
-    gnome.gnome-tweak-tool                              # Advance Gnome setting control.
     gnome.gnome-boxes                                   # Remove/Virtual system management.
+    gnome.gnome-tweak-tool                              # Advance Gnome setting control.
+    chrome-gnome-shell                                  # Gnome Shell Integration for Chrome.
     # pop-os-shell                                      # Gnome Tiling Manager.
     # gnome.geary                                         # Gnome 2nd E-Mail client.
-    # gnomeExtensions.appindicator                      # Enables systray icons.
-    # gnomeExtensions.gsconnect                         # KDE Connect for Gnome.
+    # gnomeExtensions.appindicator                        # Enables systray icons.
+    # gnomeExtensions.gsconnect                           # KDE Connect for Gnome.
   ];
 
   langPkgs = with pkgs; [

@@ -113,10 +113,14 @@
 
   hardware = {
     opengl = {
+      enable = true;
+
       extraPackages = with pkgs; [
         amdvlk
         driversi686Linux.amdvlk
+        rocm-opencl-icd
       ];
+
       driSupport = true;
       driSupport32Bit = true;
     };
@@ -224,6 +228,10 @@
       gnome.gnome-settings-daemon 
     ];
 
+    gvfs = {
+      enable = true;
+    };
+
     mpd = {
       enable = false;
       extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
@@ -235,13 +243,13 @@
     systemPackages = with pkgs; [
       wayland                                             # Wayland window system code + protocol.
       mesa                                                # FOSS 3D Graphics Lib.
+      mesa-demos                                          # Collection of demos/tests for OpenGL & Mesa.
       vulkan-headers                                      # Vulkan Header files + API registery.
       fish                                                # Shell with better defaults.
       iwd                                                 # WPA_Supplicant alternative.
       pipewire                                            # Multimedia pipeline API.
       git                                                 # Tool for git usage.
       podman                                              # Docker alternative.
-      latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
     ];
 
     variables = {
@@ -255,38 +263,46 @@
   };
 
   programs = {
+    fish.enable  = true;
     adb.enable   = true;
     dconf.enable = true;
   };
 
-  # fileSystems = { //fix
-  #   "/".options = [ "noatime,x-gvfs-hide" ];
-  #   "/boot/".options = [ "noatime,x-gvfs-hide" ];
-  # };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
+    fsType = "ext4";
+    options = [ "noatime, x-gvfs-hide" ];
+  };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/9C99-45AA";
+    fsType = "vfat";
+    options = [ "noatime, x-gvfs-hide" ];
+  };
+
   users = {
-    defaultUserShell = pkgs.bash;
+    # defaultUserShell = pkgs.fish;
     mutableUsers = false;
 
     users.root = {
        initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
        shell = pkgs.fish;
-       packages = with pkgs; [ (neovim.override { viAlias = true; vimAlias = true; withNodeJs = true;}) ];
     };
 
     users.sirius = {
-      initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
+      isNormalUser = true;
+      home = "/home/sirius";
       extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
-      isNormalUser = true;
+      initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
     };
 
     users.orca = {
-      initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
+      isNormalUser = true;
+      home = "/home/orca";
       extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
-      isNormalUser = true;
+      initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
     };
   };
 }

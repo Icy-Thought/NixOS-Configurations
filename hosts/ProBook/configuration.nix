@@ -114,6 +114,15 @@
 
   hardware = {
     opengl = {
+      enable = true;
+
+      extraPackages = with pkgs; [
+        intel-compute-runtime
+        vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+
       driSupport = true;
       driSupport32Bit = true;
     };
@@ -184,7 +193,8 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu"];
+      videoDrivers = [ "modesetting" ];
+      useGlamor = true;
 
       layout = "us";
       xkbOptions = "eurosign:e";
@@ -235,13 +245,13 @@
   environment.systemPackages = with pkgs; [
     wayland                                             # Wayland window system code + protocol.
     mesa                                                # FOSS 3D Graphics Lib.
+    mesa-demos                                          # Collection of demos/tests for OpenGL & Mesa.
     vulkan-headers                                      # Vulkan Header files + API registery.
     fish                                                # Shell with better defaults.
     iwd                                                 # WPA_Supplicant alternative.
     pipewire                                            # Multimedia pipeline API.
     git                                                 # Tool for git usage.
     podman                                              # Docker alternative.
-    latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
   ];
 
   documentation = {
@@ -250,9 +260,9 @@
   };
 
   programs = {
+    fish.enable  = true;
     adb.enable   = true;
     dconf.enable = true;
-    fish.enable  = true;
   };
 
   fileSystems."/" = {

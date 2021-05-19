@@ -47,15 +47,15 @@
 
   };
 
-  # Set nixpkgs options (for home-manager installed packages only).
   fonts = {
     fontconfig = {
       enable = true;
     };
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  # };
+  i18n.inputMethod = {
+    enabled = "ibus";
+    # ibus.engines = with pkgs.ibus-engines; [ anthy hangul mozc ];
+  };
 
 }
