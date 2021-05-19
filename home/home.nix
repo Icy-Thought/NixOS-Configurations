@@ -8,6 +8,7 @@
     ./modules/neovim.nix
     ./modules/git.nix
     # ./modules/gnome.nix
+    ./modules/dconf.nix
     ./modules/zathura.nix
   ];
 

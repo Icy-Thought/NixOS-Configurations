@@ -85,8 +85,9 @@ let
   ];
    
   utilsPkgs = with pkgs; [
+    # uutils-coreutils                                    # Rust Rewrite of GNU-coreutils.
     any-nix-shell                                       # Fish/ZSH support for nix-shell.
-    uutils-coreutils                                    # Rust Rewrite of GNU-coreutils.
+    pciutils                                            # lspci, setpci & update-pciids support.
     wireguard                                           # Wireguard tools.
     gnupg                                               # Encrypt/Decrypt software.
     wget                                                # Downloading files from URL in terminal.
@@ -96,14 +97,15 @@ let
     wl-clipboard                                        # Copy/Paste in wayland terminal.
     gnumake                                             # Controls the generation of executable files.
     ffmpeg                                              # Library + Programs for management of multimedia files and streams.
-    pwgen                                               # Password generator.
+    pv                                                  # Progress-bar for mv/cp.
+    fd                                                  # faster find.
+    exa                                                 # better ls.
     ripgrep                                             # faster grep.
     skim                                                # faster fzf.
-    exa                                                 # better ls.
-    fd                                                  # faster find.
-    pv                                                  # Progress-bar for mv/cp.
     upower                                              # D-Bus service for power management.
     zstd                                                # Undo-fu-session/undo-tree-compression.
+    dconf2nix                                           # Nixify your dconf-settings.
+    pwgen                                               # Password generator.
     imagemagick                                         # LaTeX image export.
     winetricks                                          # Install required DLL to escape exe trouble.
     tree-sitter                                         # Parser generator + incremental parsing lib.
