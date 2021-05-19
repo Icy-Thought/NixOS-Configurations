@@ -6,7 +6,7 @@ let
     alacritty                                           # Rust-based Terminal.
     brave                                               # Chromium-based browser.
     latest.firefox-nightly-bin                          # Latest Firefox edition.
-    latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
+    # latest.firefox-beta-bin                             # Firefox + dev-tools enabled.
     openrazer-daemon                                    # Control your razer hardware.
     # Polychromatic                                     # GUI to control OpenRazer.
     mpv                                                 # Media Player.

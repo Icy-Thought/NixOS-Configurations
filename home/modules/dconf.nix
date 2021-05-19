@@ -61,14 +61,6 @@ in
       exec = "alacritty";
     };
 
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///home/sirius/.local/share/backgrounds/2021-04-15-06-00-41-joseph-barrientos-Ji_G7Bu1MoM-unsplash.jpg";
-      primary-color = "#000000000000";
-      secondary-color = "#000000000000";
-    };
-
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
@@ -107,15 +99,6 @@ in
       recent-files-max-age = 30;
       remove-old-temp-files = true;
       remove-old-trash-files = true;
-    };
-
-    "org/gnome/desktop/screensaver" = {
-      color-shading-type = "solid";
-      lock-delay = "uint32 0";
-      picture-options = "zoom";
-      picture-uri = "file:///home/sirius/.local/share/backgrounds/2021-04-15-06-00-41-joseph-barrientos-Ji_G7Bu1MoM-unsplash.jpg";
-      primary-color = "#000000000000";
-      secondary-color = "#000000000000";
     };
 
     "org/gnome/desktop/session" = {
@@ -198,11 +181,7 @@ in
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [ "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "blur-me@nunchucks" ];
-      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "volume-mixer@evermiss.net" "gsconnect@andyholmes.github.io" "sound-output-device-chooser@kgshank.net" "espresso@coadmunkee.github.com" "pop-shell@system76.com" "CoverflowAltTab@palatis.blogspot.com" "arch-update@RaphaelRochet" "appindicatorsupport@rgcjonas.gmail.com" "blur-my-shell@aunetx" ];
       favorite-apps = [ "org.gnome.Nautilus.desktop" "org.gnome.Fractal.desktop" "discord-canary.desktop" "org.gnome.Geary.desktop" "firefox-developer-edition.desktop" "firefox-nightly.desktop" "emacs.desktop" "Alacritty.desktop" "qalculate-gtk.desktop" ];
-      had-bluetooth-devices-setup = true;
-      welcome-dialog-last-shown-version = "40.0";
     };
 
     "org/gnome/shell/weather" = {
