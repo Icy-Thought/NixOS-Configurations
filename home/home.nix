@@ -47,6 +47,13 @@
     };
 
   };
+  services = {
+    gnome = {
+      chrome-gnome-shell = {
+        enable = true;
+      };
+    };
+  };
 
   fonts = {
     fontconfig = {

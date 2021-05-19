@@ -17,7 +17,7 @@ let
     libreoffice                                         # The better office alternative suit.
     obs-studio                                          # Streaming/Recording.
     qalculate-gtk                                       # Scientific calculator.
-    discord-canary                                      # Latest Discord client.
+    discord                                             # Latest Discord client.
     tdesktop                                            # Telegram Desktop.
     signal-desktop                                      # More secure WhatsApp alternative.
     fractal                                             # Rust-based matrix client.
@@ -54,10 +54,11 @@ let
     # gnomeExtensions.gsconnect                           # KDE Connect for Gnome.
   ];
 
-  langPkgs = with pkgs; [
+  devPkgs = with pkgs; [
     rust-bin.nightly.latest.default                     # Latest Rust compiler.
     rust-analyzer                                       # Rust-Analyzer for better rust completion.
     languagetool                                        # Proofreading (grammar checker) for several languages.
+    clang                                               # C/C++ compiler.
     ccls                                                # C/C++ language server powered by clang.
     cmake                                               # Automated build automation, testing & packaging software.
     texlive.combined.scheme-medium                      # LaTeX support.
@@ -90,6 +91,8 @@ let
     pciutils                                            # lspci, setpci & update-pciids support.
     wireguard                                           # Wireguard tools.
     gnupg                                               # Encrypt/Decrypt software.
+    openssl                                             # Library for SSL and TLS protocols.
+    firejail                                            # Namespace-based sandboxing tool.
     wget                                                # Downloading files from URL in terminal.
     unzip                                               # Enable unzipping files.
     unrar                                               # Enable extracting files from rar files.
@@ -104,16 +107,16 @@ let
     skim                                                # faster fzf.
     upower                                              # D-Bus service for power management.
     zstd                                                # Undo-fu-session/undo-tree-compression.
+    sqlite                                              # Serverless SQL database.
     dconf2nix                                           # Nixify your dconf-settings.
     pwgen                                               # Password generator.
     imagemagick                                         # LaTeX image export.
     winetricks                                          # Install required DLL to escape exe trouble.
     tree-sitter                                         # Parser generator + incremental parsing lib.
-    firejail                                            # Namespace-based sandboxing tool.
-    starship                                            # Minimal + customizable prompt.
   ];
 
   tuiPkgs = with pkgs; [
+    starship                                            # Minimal + customizable prompt.
     nnn                                                 # TUI file manager.
     htop                                                # Monitor current processes.
     neofetch                                            # Fetch system information.
@@ -137,7 +140,7 @@ in {
     gitPkgs 
     editorPkgs 
     gnomePkgs 
-    langPkgs 
+    devPkgs 
     spellPkgs 
     nixPkgs 
     utilsPkgs 

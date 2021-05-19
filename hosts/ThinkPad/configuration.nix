@@ -10,10 +10,6 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   nixpkgs = {
-    overlays = [
-      (import ../../overlays/firefox-overlay.nix)
-    ];
-
     config = {
       allowUnfree = true;
     };
@@ -276,19 +272,19 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
+    device = "/dev/disk/by-uuid/f07ebe5d-2251-48ed-8920-6c9903630073";
     fsType = "ext4";
     options = [ "noatime, x-gvfs-hide" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/9C99-45AA";
+    device = "/dev/disk/by-uuid/F9F4-0240";
     fsType = "vfat";
     options = [ "noatime, x-gvfs-hide" ];
   };
 
   users = {
-    # defaultUserShell = pkgs.fish;
+    defaultUserShell = pkgs.fish;
     mutableUsers = false;
 
     users.root = {
@@ -299,16 +295,16 @@
     users.sirius = {
       isNormalUser = true;
       home = "/home/sirius";
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
     };
 
     users.orca = {
       isNormalUser = true;
       home = "/home/orca";
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
     };
   };

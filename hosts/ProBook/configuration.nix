@@ -10,10 +10,6 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   nixpkgs = {
-    overlays = [
-      (import ../../overlays/firefox-overlay.nix)
-    ];
-
     config = {
       allowUnfree = true;
     };
@@ -285,7 +281,7 @@
   };
 
   users = {
-    # defaultUserShell = pkgs.fish;
+    defaultUserShell = pkgs.fish;
     mutableUsers = false;
 
     users.root = {
@@ -296,16 +292,16 @@
     users.sirius = {
       isNormalUser = true;
       home = "/home/sirius";
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
     };
 
     users.orca = {
       isNormalUser = true;
       home = "/home/orca";
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       shell = pkgs.fish;
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
       initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
     };
   };
