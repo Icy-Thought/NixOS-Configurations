@@ -98,7 +98,6 @@
       enable = false;
       extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
     };
-
   };
 
 }

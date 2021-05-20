@@ -44,9 +44,11 @@
 
   # Boot configurations.
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages_latest;
     # kernelPackages = pkgs.linuxPackages_xanmod.amdgpu-pro;
-    kernelParams = [ "pcie_aspm.policy=performance" ];
+    kernelParams = [
+      "pcie_aspm.policy=performance"
+    ];
     
     # Set GRUB2 to default boot.
     loader = {
@@ -62,6 +64,8 @@
         device = "nodev";
       };
     };
+
+    cleanTmpDir = true;
   };
 
   fileSystems."/" = {
@@ -104,17 +108,6 @@
 
   time.timeZone = "Europe/Stockholm";
 
-  fonts.fonts = with pkgs; [
-    source-code-pro
-    emacs-all-the-icons-fonts
-    iosevka-bin
-    liberation_ttf
-    font-awesome
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
-
   # Recommended for pipewire
   security = {
     rtkit = {
@@ -154,6 +147,17 @@
     };
   };
 
+  fonts.fonts = with pkgs; [
+    source-code-pro
+    emacs-all-the-icons-fonts
+    iosevka-bin
+    liberation_ttf
+    font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+  ];
+
   environment = {
     systemPackages = with pkgs; [
       wayland                                             # Wayland window system code + protocol.
@@ -182,6 +186,7 @@
     fish.enable  = true;
     adb.enable   = true;
     dconf.enable = true;
+    gnupg.agent.enable = true;
   };
 
 }
