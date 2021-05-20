@@ -71,10 +71,6 @@
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     useDHCP = false;
 
-    interfaces = {
-      enp1s0.useDHCP = true;
-    };
-
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";

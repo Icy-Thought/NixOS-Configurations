@@ -1,21 +1,26 @@
 { config, pkgs, inputs, ... }:
+
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+
+in 
 {
   imports = [
-    ./home-apps.nix
+    ./hm-packages.nix
     ./modules/fish.nix
     ./modules/alacritty.nix
     ./modules/emacs.nix
     ./modules/neovim.nix
     ./modules/git.nix
     # ./modules/gnome.nix
-    ./modules/dconf.nix
+    # ./modules/dconf.nix                       <-- find more appropriate way to enable this setting.
     ./modules/zathura.nix
   ];
 
   nixpkgs = {
     config = {
-      allowUnfree = true;  
-    };
+      allowUnfree = true;
+      };
 
     overlays = [
       (import ../overlays/firefox-overlay.nix)
@@ -23,7 +28,8 @@
       (import ../overlays/neovim-nightly-overlay.nix)
       # (import ../overlays/emacs-overlay.nix)
     ];
-  }; 
+
+  };
 
   programs = {
     home-manager = {
@@ -47,14 +53,7 @@
     };
 
   };
-  services = {
-    gnome = {
-      chrome-gnome-shell = {
-        enable = true;
-      };
-    };
-  };
-
+ 
   fonts = {
     fontconfig = {
       enable = true;

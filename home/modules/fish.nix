@@ -4,7 +4,7 @@
   programs.fish = {
     enable = true;
     shellInit = builtins.readFile ../config/fish/config.fish;
-    shellAliases = {
+    shellAbbrs = {
 
       # General
       ls     = "exa -l";
@@ -15,6 +15,13 @@
       temacs = "emacsclient -t";
       emacs  = "emacsclient -c";
       zoom   = "firejail zoom";
+
+      # NixOS
+      nixify = "dconf dump / | dconf2nix > ~/git/NixOS-Configurations/home/modules/dconf.nix";
+
+      # Doom Emacs
+      doupg = "doom sync && doom upgrade";
+      doprg = "doom purge";
 
       # Fish
       fshcfg = "nvim ~/.config/fish/config.fish";
