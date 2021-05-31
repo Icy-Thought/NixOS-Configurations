@@ -81,8 +81,14 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
-      enabled = "ibus";
-      # ibus.engines = with pkgs.ibus-engines; [ anthy hangul mozc ];
+      enabled = "fcitx5";
+      fcitx.addons = with pkgs; [ 
+        fcitx5-gtk
+        fcitx5-configtool
+        fcitx5-chinese-addons
+        fcitx5-mozc
+        # fcitx5-hangul
+      ];
     };
   };
 
@@ -206,29 +212,7 @@
           disableWhileTyping = true;
         };
       };
-    
-      # GNOME DE:
-      displayManager.gdm = {
-        enable  = true;
-        wayland = true;
-      };
-
-      desktopManager.gnome = {
-        enable = true;
-      };
-
-      # KDE-Plasma
-      # displayManager.sddm.enable = true;
-      # desktopManager.plasma5.enable = true;
     };
-
-    dbus.packages = with pkgs; [ 
-      gnome.dconf 
-    ];
-
-    udev.packages = with pkgs; [ 
-      gnome.gnome-settings-daemon 
-    ];
 
     gvfs = {
       enable = true;
@@ -242,7 +226,23 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wayland                                             # Wayland window system code + protocol.
+    # Sway-related
+    swaylock                                            # Wayland Screen-locker.
+    swayidle                                            # Idle management.
+    wl-clipboard                                        # Wayland clipboard.
+    mako                                                # Notification daemon.
+    wofi                                                # Wayland Launcher.
+    waybar                                              # Polybar alternative.
+    wf-recorder                                         # Screen recorder for Sway.
+    # grim                                                # Screenshot tool for Wayland.
+    
+    # Theme-related
+    gtk-engine-murrine
+    gtk_engines
+    gsettings-desktop-schemas
+    lxappearance
+
+    # Additional Packages
     mesa                                                # FOSS 3D Graphics Lib.
     mesa-demos                                          # Collection of demos/tests for OpenGL & Mesa.
     vulkan-headers                                      # Vulkan Header files + API registery.
@@ -261,7 +261,14 @@
   programs = {
     fish.enable  = true;
     adb.enable   = true;
-    dconf.enable = true;
+
+    qt5ct.enable = true;
+    waybar.enable = true;
+
+    sway = {
+      enable = true;
+      wrapperFeature.gtk = true;
+    };
   };
 
   fileSystems."/" = {

@@ -124,7 +124,6 @@ let
     unzip                                                         # Enable unzipping files.
     unrar                                                         # Enable extracting files from rar files.
     xclip                                                         # Copy/Paste in XOrg terminal.
-    wl-clipboard                                                  # Copy/Paste in wayland terminal.
     ffmpeg                                                        # Library + Programs for management of multimedia files and streams.
     pv                                                            # Progress-bar for mv/cp.
     fd                                                            # faster find.
@@ -172,8 +171,6 @@ in {
     defaultPkgs 
     gitPkgs 
     editorPkgs 
-    gappsPkgs 
-    gextPkgs
     devPkgs 
     pyPkgs
     spellPkgs 
@@ -181,5 +178,7 @@ in {
     utilsPkgs 
     tuiPkgs 
     gamingPkgs
+    # gappsPkgs 
+    # gextPkgs
   ];
 }
