@@ -253,29 +253,6 @@
   programs = {
     fish.enable  = true;
     adb.enable   = true;
-
-    qt5ct.enable = true;
-    waybar.enable = true;
-
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-
-      extraSessionCommands = ''
-        export SDL_VIDEODRIVER=wayland
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export _JAVA_AWT_WM_NONREPARENTING=1
-        export MOZ_ENABLE_WAYLAND=1
-
-        # Fcitx-related
-        export INPUT_METHOD=fcitx
-        export QT_IM_MODULE=fcitx
-        export GTK_IM_MODULE=fcitx
-        export XMODIFIERS=@im=fcitx
-        export XIM_SERVERS=fcitx
-      '';
-    };
   };
 
   fileSystems."/" = {
