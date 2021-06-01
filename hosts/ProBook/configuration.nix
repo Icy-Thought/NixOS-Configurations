@@ -82,7 +82,7 @@
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
       enabled = "fcitx5";
-      fcitx.addons = with pkgs; [ 
+      fcitx5.addons = with pkgs; [ 
         fcitx5-gtk
         fcitx5-configtool
         fcitx5-chinese-addons
@@ -212,6 +212,14 @@
           disableWhileTyping = true;
         };
       };
+
+      displayManager.sddm = {
+        enable = true;
+      };
+
+      desktopManager.plasma5 = {
+        enable = true;
+      };
     };
 
     gvfs = {
@@ -226,23 +234,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Sway-related
-    swaylock                                            # Wayland Screen-locker.
-    swayidle                                            # Idle management.
     wl-clipboard                                        # Wayland clipboard.
-    mako                                                # Notification daemon.
-    wofi                                                # Wayland Launcher.
-    waybar                                              # Polybar alternative.
-    wf-recorder                                         # Screen recorder for Sway.
-    # grim                                                # Screenshot tool for Wayland.
-    
-    # Theme-related
-    gtk-engine-murrine
-    gtk_engines
-    gsettings-desktop-schemas
-    lxappearance
-
-    # Additional Packages
     mesa                                                # FOSS 3D Graphics Lib.
     mesa-demos                                          # Collection of demos/tests for OpenGL & Mesa.
     vulkan-headers                                      # Vulkan Header files + API registery.
@@ -267,7 +259,22 @@
 
     sway = {
       enable = true;
-      wrapperFeature.gtk = true;
+      wrapperFeatures.gtk = true;
+
+      extraSessionCommands = ''
+        export SDL_VIDEODRIVER=wayland
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        export _JAVA_AWT_WM_NONREPARENTING=1
+        export MOZ_ENABLE_WAYLAND=1
+
+        # Fcitx-related
+        export INPUT_METHOD=fcitx
+        export QT_IM_MODULE=fcitx
+        export GTK_IM_MODULE=fcitx
+        export XMODIFIERS=@im=fcitx
+        export XIM_SERVERS=fcitx
+      '';
     };
   };
 
