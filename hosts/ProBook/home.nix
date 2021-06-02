@@ -5,6 +5,6 @@ let
 
 in {
   imports = [
-    ../../home/home.nix
+    ../../home/default.nix
   ];
 }

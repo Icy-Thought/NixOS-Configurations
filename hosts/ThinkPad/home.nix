@@ -23,7 +23,7 @@ let
 
 in {
   imports = [
-    ../../home/home.nix
+    ../../home/default.nix
     ../../home/modules/gnome.nix
     # ../../home/modules/dconf.nix                       <--- rework <---
   ];
