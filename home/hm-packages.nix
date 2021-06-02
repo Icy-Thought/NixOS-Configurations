@@ -6,7 +6,6 @@ let
     alacritty                                                     # Rust-based Terminal.
     brave                                                         # Chromium-based browser.
     latest.firefox-nightly-bin                                    # Latest Firefox edition.
-    # latest.firefox-beta-bin                                       # Firefox + dev-tools enabled.
     openrazer-daemon                                              # Control your razer hardware.
     # Polychromatic                                               # GUI to control OpenRazer.
     anki                                                          # Spaced repetition flashcard.
@@ -43,24 +42,6 @@ let
     gnuplot                                                       # Plotting through programming.
     neovim-nightly                                                # Neovim + Lua support.
     tmux                                                          # Terminal multiplexer.
-  ];
-
-  gappsPkgs= with pkgs.gnome; [
-    geary                                                         # Gnome 2nd E-Mail client.
-    zenity                                                        # Display Dialogs.
-    polari                                                        # Gnome IRC client.
-    meld                                                          # Visual merge/diff tool.
-    gnome-boxes                                                   # Remove/Virtual system management.
-    gnome-dictionary                                              # To look up mispellings.
-    gnome-disk-utility                                            # Manage your disks through gnome.
-    gnome-tweak-tool                                              # Advance Gnome setting control.
-    gnome-software                                                # Gnome software store.
-    gnome-packagekit                                              # Allows installing software on Gnome.
-  ];
-
-  gextPkgs = with pkgs; [
-    chrome-gnome-shell                                            # Gnome Shell integration for Chrome.
-    # gnomeExtensions.pop-os-shell                                # Gnome Tiling Manager.
   ];
 
   devPkgs = with pkgs; [
@@ -152,11 +133,11 @@ let
     nnn                                                           # TUI file manager.
     htop                                                          # Monitor current processes.
     neofetch                                                      # Fetch system information.
+    youtube-dl                                                    # YouTube media downloader.
     # mpd                                                           # Media player daemon.
     # ncmpcpp                                                       # TUI music player.
     # spotify-tui                                                   # TUI for premium Spotify users.
     # speedtest-cli                                                 # TUI Speedtest.
-    youtube-dl                                                    # YouTube media downloader.
   ];
 
   gamingPkgs = with pkgs; [
@@ -178,7 +159,5 @@ in {
     utilsPkgs 
     tuiPkgs 
     gamingPkgs
-    # gappsPkgs 
-    # gextPkgs
   ];
 }

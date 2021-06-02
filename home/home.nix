@@ -12,23 +12,15 @@ in
     ./modules/emacs.nix
     ./modules/neovim.nix
     ./modules/git.nix
-    # ./modules/gnome.nix
-    # ./modules/dconf.nix                       <-- find more appropriate way to enable this setting.
     ./modules/zathura.nix
   ];
 
   nixpkgs = {
-    config = {
-      allowUnfree = true;
-      };
-
     overlays = [
       (import ../overlays/firefox-overlay.nix)
       (import ../overlays/rust-overlay.nix)
       (import ../overlays/neovim-nightly-overlay.nix)
-      # (import ../overlays/emacs-overlay.nix)
     ];
-
   };
 
   programs = {

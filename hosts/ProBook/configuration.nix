@@ -4,6 +4,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./services.nix
+      ./users.nix
     ];
 
   # Build NixOS from latest stable release.
@@ -65,6 +67,18 @@
     };
   };
 
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
+    fsType = "ext4";
+    options = [ "noatime, x-gvfs-hide" ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/9C99-45AA";
+    fsType = "vfat";
+    options = [ "noatime, x-gvfs-hide" ];
+  };
+
   # Network configurations.
   networking = {
     hostName = "NixOS";
@@ -98,17 +112,6 @@
   };
 
   time.timeZone = "Europe/Stockholm";
-
-  fonts.fonts = with pkgs; [
-    source-code-pro
-    emacs-all-the-icons-fonts
-    iosevka-bin
-    liberation_ttf
-    font-awesome
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
 
   # Recommended for pipewire
   security = {
@@ -150,88 +153,16 @@
     };
   };
 
-  services = {
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-
-      pulse = {
-        enable = true;
-      };
-
-      # If you want to use JACK applications, uncomment:
-      # #jack.enable = true;
-
-      # Bluetooth pipewire settings:
-      media-session.config.bluez-monitor.rules = [
-        {
-          # Matches all cards
-          matches = [ { "device.name" = "~bluez_card.*"; } ];
-          actions = {
-            "update-props" = {
-              "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-              # mSBC is not expected to work on all headset + adapter combinations.
-              "bluez5.msbc-support" = true;
-            };
-          };
-        }
-        {
-          matches = [
-            # Matches all sources
-            { "node.name" = "~bluez_input.*"; }
-            # Matches all outputs
-            { "node.name" = "~bluez_output.*"; }
-          ];
-          actions = {
-            "node.pause-on-idle" = false;
-          };
-        }
-      ];
-    };
-
-    printing = {
-      enable = true;
-    };
-
-    xserver = {
-      enable = true;
-      videoDrivers = [ "modesetting" ];
-      useGlamor = true;
-
-      layout = "us";
-      xkbOptions = "eurosign:e";
-
-      libinput = {
-        enable = true;
-        touchpad = {
-          naturalScrolling = true;
-          tapping = true;
-          disableWhileTyping = true;
-        };
-      };
-
-      displayManager.sddm = {
-        enable = true;
-      };
-
-      desktopManager.plasma5 = {
-        enable = true;
-      };
-    };
-
-    gvfs = {
-      enable = true;
-    };
-
-    mpd = {
-      enable = false;
-      extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
-    };
-
-  };
+  fonts.fonts = with pkgs; [
+    source-code-pro
+    emacs-all-the-icons-fonts
+    iosevka-bin
+    liberation_ttf
+    font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+  ];
 
   environment.systemPackages = with pkgs; [
     wl-clipboard                                        # Wayland clipboard.
@@ -255,41 +186,4 @@
     adb.enable   = true;
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6a76fd5f-b327-43fb-81cd-aef0c69deb7a";
-    fsType = "ext4";
-    options = [ "noatime, x-gvfs-hide" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/9C99-45AA";
-    fsType = "vfat";
-    options = [ "noatime, x-gvfs-hide" ];
-  };
-
-  users = {
-    defaultUserShell = pkgs.fish;
-    mutableUsers = false;
-
-    users.root = {
-       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
-       shell = pkgs.fish;
-    };
-
-    users.sirius = {
-      isNormalUser = true;
-      home = "/home/sirius";
-      shell = pkgs.fish;
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
-      initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
-    };
-
-    users.orca = {
-      isNormalUser = true;
-      home = "/home/orca";
-      shell = pkgs.fish;
-      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
-      initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
-    };
-  };
 }
