@@ -69,22 +69,28 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/f07ebe5d-2251-48ed-8920-6c9903630073";
+    device = "/dev/disk/by-uuid/ef5dca4d-8612-4313-9d56-9ec9d600db77";
     fsType = "ext4";
     options = [ "noatime, x-gvfs-hide" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F9F4-0240";
+    device = "/dev/disk/by-uuid/96EA-7815";
     fsType = "vfat";
-    options = [ "noatime, x-gvfs-hide" ];
+    options = [ "x-gvfs-hide" ];
   };
 
-  # Network configurations.
   networking = {
     hostName = "NixOS";
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+
+    # Global useDHCP => deprecated.
     useDHCP = false;
+
+    # Per-interface useDHCP is mandatory. (Not Required by NetworkManager)
+    interfaces = {
+      enp1s0.useDHCP = true;
+      wlp3s0.useDHCP = true;
+    };
 
     networkmanager = {
       enable = true;

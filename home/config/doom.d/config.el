@@ -6,15 +6,17 @@
 (setq
  doom-font (font-spec :family "Iosevka" :size 16 :weight 'Semi-Bold)
  doom-big-font (font-spec :family "Iosevka" :size 20 :weight 'Semi-Bold)
- doom-theme 'doom-one)
+ doom-theme 'doom-horizon)
 
 ;; (doom/set-frame-opacity 95)
 
 (setq
  confirm-kill-emacs nil                             ; Disable Emacs confirm-exit messages.
  display-line-numbers-type t
- solaire-mode-auto-swap-bg nil                      ; Disable solaire-mode (disable brighter bg-color).
  x-stretch-cursor t)                                ; Cursor size = glyph width.
+
+(with-eval-after-load 'solaire-mode                 ; Inverted solaire color-schemes.
+  (add-to-list 'solaire-mode-themes-to-face-swap 'doom-horizon))
 
 (setq
  doom-modeline-height 35
