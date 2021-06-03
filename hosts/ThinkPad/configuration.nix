@@ -62,6 +62,7 @@
         version = 2;
         efiSupport = true;
         device = "nodev";
+        useOSProber = true;
       };
     };
 
@@ -89,7 +90,7 @@
     # Per-interface useDHCP is mandatory. (Not Required by NetworkManager)
     interfaces = {
       enp1s0.useDHCP = true;
-      wlp3s0.useDHCP = true;
+      wlan0.useDHCP = true;
     };
 
     networkmanager = {
