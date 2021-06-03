@@ -1,9 +1,4 @@
 { config, pkgs, inputs, ... }:
-
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-
-in 
 {
   imports = [
     ./hm-packages.nix
@@ -16,6 +11,10 @@ in
   ];
 
   nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+
     overlays = [
       (import ../overlays/firefox-overlay.nix)
       (import ../overlays/rust-overlay.nix)

@@ -10,7 +10,6 @@ return require("packer").startup(
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
         use "mhinz/vim-startify"
-        -- use "ollykel/v-vim" -- v syntax highlighter
 
         -- lsp stuff
         use "nvim-treesitter/nvim-treesitter"
@@ -25,7 +24,7 @@ return require("packer").startup(
         use "glepnir/galaxyline.nvim"
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
-        
+
         -- snippet support
         use "hrsh7th/vim-vsnip"
         use "rafamadriz/friendly-snippets"
@@ -43,9 +42,7 @@ return require("packer").startup(
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
-
-        -- discord rich presence
-        --use "andweeb/presence.nvim"
+        use "folke/which-key.nvim"
 
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end,

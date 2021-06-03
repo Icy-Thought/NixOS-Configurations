@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-
   gappsPkgs= with pkgs.gnome; [
     geary                                                         # Gnome 2nd E-Mail client.
     zenity                                                        # Display Dialogs.
@@ -24,11 +22,15 @@ let
 in {
   imports = [
     ../../home/default.nix
-    ../../home/modules/gnome.nix
+    # ../../home/modules/gnome.nix
     # ../../home/modules/dconf.nix                       <--- rework <---
   ];
 
   nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+
     overlays = [
       # (import ../../overlays/emacs-overlay.nix)
     ];
