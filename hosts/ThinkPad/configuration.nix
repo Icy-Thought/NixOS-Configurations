@@ -8,7 +8,7 @@
     ];
 
   # Build NixOS from latest stable release.
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.05"; # Did you read the comment?
 
   nixpkgs = {
     config = {
