@@ -15,7 +15,6 @@ let
   ];
 
   gextPkgs = with pkgs; [
-    chrome-gnome-shell                                            # Gnome Shell integration for Chrome.
     # gnomeExtensions.pop-os-shell                                # Gnome Tiling Manager.
   ];
 
@@ -29,11 +28,16 @@ in {
   nixpkgs = {
     config = {
       allowUnfree = true;
+
+      firefox-nightly = {
+        enableGnomeExtensions = true;
+      };
     };
 
     overlays = [
       # (import ../../overlays/emacs-overlay.nix)
     ];
+
   };
 
   home.packages = builtins.concatLists [

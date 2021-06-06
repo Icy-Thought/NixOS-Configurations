@@ -5,6 +5,7 @@
       ./hardware-configuration.nix
       ./services.nix
       ./users.nix
+      ./packages.nix
     ];
 
   # Build NixOS from latest stable release.
@@ -44,8 +45,13 @@
 
   # Boot configurations.
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_xanmod.amdgpu-pro;
+    kernelPackages = pkgs.linuxPackages_xanmod;
+
+    extraModulePackages = with config.boot.kernelPackages; [ 
+      # amdgpu-pro
+      cpupower 
+    ];
+    
     kernelParams = [
       "pcie_aspm.policy=performance"
     ];
@@ -54,7 +60,7 @@
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+        efiSysMountPoint = "/boot/efi";
       };
 
       grub = {
@@ -75,7 +81,7 @@
     options = [ "noatime, x-gvfs-hide" ];
   };
 
-  fileSystems."/boot" = {
+  fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/96EA-7815";
     fsType = "vfat";
     options = [ "x-gvfs-hide" ];
@@ -88,14 +94,14 @@
     useDHCP = false;
 
     # Per-interface useDHCP is mandatory. (Not Required by NetworkManager)
-    interfaces = {
-      enp1s0.useDHCP = true;
-      wlan0.useDHCP = true;
-    };
+    # interfaces = {
+    #   enp1s0.useDHCP = true;
+    #   wlan0.useDHCP = true;
+    # };
 
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
+      # wifi.backend = "iwd";
     };
   };
 
@@ -141,9 +147,14 @@
     };
 
     bluetooth = {
-      enable = true;
+      enable = false;
     };
   };
+
+  systemd.services.resolved.enable = false;
+  systemd.services.systemd-udev-settle.enable = false;
+  systemd.services.avahi-daemon.enable = false;
+  systemd.services.systemd-machined.enable = false;
 
   virtualisation = {
     podman = {
@@ -164,25 +175,6 @@
     noto-fonts-cjk
     noto-fonts-emoji
   ];
-
-  environment = {
-    systemPackages = with pkgs; [
-      wayland                                             # Wayland window system code + protocol.
-      mesa                                                # FOSS 3D Graphics Lib.
-      mesa-demos                                          # Collection of demos/tests for OpenGL & Mesa.
-      vulkan-headers                                      # Vulkan Header files + API registery.
-      bash                                                # The legendary shell.
-      fish                                                # Shell with better defaults.
-      iwd                                                 # WPA_Supplicant alternative.
-      pipewire                                            # Multimedia pipeline API.
-      git                                                 # Tool for git usage.
-      podman                                              # Docker alternative.
-    ];
-
-    variables = {
-      VK_ICD_FILENAMES = [ "/run/opengl-driver/share/vulkan/icd.d/amd_icd64.json" ];
-    };
-  };
 
   documentation = {
     man.enable   = true;

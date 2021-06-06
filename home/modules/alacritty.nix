@@ -53,9 +53,9 @@
       live_config_reload = true;
 
       font = {
-        normal.family = "Iosevka SemiBold";
-        bold.family   = "Iosevka SemiBold";
-        italic.family = "Iosevka SemiBold";
+        normal.family = "Iosevka Term SemiBold";
+        bold.family   = "Iosevka Term SemiBold";
+        italic.family = "Iosevka Term SemiBold Italic";
 
         size = 12.0;
         use_thin_strokes = true;

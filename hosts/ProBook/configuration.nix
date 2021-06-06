@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./services.nix
       ./users.nix
+      ./packages.nix
     ];
 
   # Build NixOS from latest stable release.
@@ -162,18 +163,6 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-  ];
-
-  environment.systemPackages = with pkgs; [
-    wl-clipboard                                        # Wayland clipboard.
-    mesa                                                # FOSS 3D Graphics Lib.
-    mesa-demos                                          # Collection of demos/tests for OpenGL & Mesa.
-    vulkan-headers                                      # Vulkan Header files + API registery.
-    fish                                                # Shell with better defaults.
-    iwd                                                 # WPA_Supplicant alternative.
-    pipewire                                            # Multimedia pipeline API.
-    git                                                 # Tool for git usage.
-    podman                                              # Docker alternative.
   ];
 
   documentation = {

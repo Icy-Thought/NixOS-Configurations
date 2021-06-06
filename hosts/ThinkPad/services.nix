@@ -100,6 +100,10 @@
 
     };
 
+    gnome = {
+      chrome-gnome-shell.enable = true;
+    };
+
     gvfs = {
       enable = true;
     };

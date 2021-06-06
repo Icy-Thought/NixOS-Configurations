@@ -4,12 +4,11 @@ let
   defaultPkgs = with pkgs; [
     zathura                                                       # Minimal PDF/EPUB/DJUV/.. reader.
     alacritty                                                     # Rust-based Terminal.
-    brave                                                         # Chromium-based browser.
     latest.firefox-nightly-bin                                    # Latest Firefox edition.
+    brave                                                         # Chromium-based browser.
     openrazer-daemon                                              # Control your razer hardware.
     # Polychromatic                                               # GUI to control OpenRazer.
     anki                                                          # Spaced repetition flashcard.
-    mpv                                                           # Media Player.
     celluloid                                                     # GTK frontend for MPV.
     gimp                                                          # The better Photoshop alternative.
     inkscape                                                      # The better Illustrator alternative.
@@ -94,32 +93,10 @@ let
   ];
 
   utilsPkgs = with pkgs; [
-    # uutils-coreutils                                              # Rust Rewrite of GNU-coreutils.
-    moreutils                                                     # An extension to GNU utils.
-    direnv                                                        # Shell extension to manage env.
-    pciutils                                                      # lspci, setpci & update-pciids support.
-    wireguard                                                     # Wireguard tools.
-    gnupg                                                         # Encrypt/Decrypt software.
-    firejail                                                      # Namespace-based sandboxing tool.
+    # uutils-coreutils                                            # Rust Rewrite of GNU-coreutils.
     wget                                                          # Downloading files from URL in terminal.
     unzip                                                         # Enable unzipping files.
-    unrar                                                         # Enable extracting files from rar files.
-    xclip                                                         # Copy/Paste in XOrg terminal.
-    ffmpeg                                                        # Library + Programs for management of multimedia files and streams.
-    pv                                                            # Progress-bar for mv/cp.
-    fd                                                            # faster find.
-    exa                                                           # better ls.
-    ripgrep                                                       # faster grep.
-    skim                                                          # faster fzf.
-    gh                                                            # Official GitHub client.
-    upower                                                        # D-Bus service for power management.
-    binutils                                                      # Tools for manipulating binaries.
-    exiftool                                                      # Control file metadata.
-    bustle                                                        # Draw sequence diagrams of D-Bus traffic.
-    dfeet                                                         # D-Bus debugger.
-    diffoscope                                                    # In-depth comparison tool.
-    common-updater-scripts                                        # Common nix updating scripts????
-    zstd                                                          # Undo-fu-session/undo-tree-compression.
+    ffmpeg                                                        # Management of multimedia files and streams.
     dconf2nix                                                     # Nixify your dconf-settings.
     pwgen                                                         # Password generator.
     imagemagick                                                   # LaTeX image export.
@@ -134,10 +111,10 @@ let
     htop                                                          # Monitor current processes.
     neofetch                                                      # Fetch system information.
     youtube-dl                                                    # YouTube media downloader.
-    # mpd                                                           # Media player daemon.
-    # ncmpcpp                                                       # TUI music player.
-    # spotify-tui                                                   # TUI for premium Spotify users.
-    # speedtest-cli                                                 # TUI Speedtest.
+    # mpd                                                         # Media player daemon.
+    # ncmpcpp                                                     # TUI music player.
+    # spotify-tui                                                 # TUI for premium Spotify users.
+    # speedtest-cli                                               # TUI Speedtest.
   ];
 
   gamingPkgs = with pkgs; [
@@ -160,4 +137,5 @@ in {
     tuiPkgs 
     gamingPkgs
   ];
+
 }
