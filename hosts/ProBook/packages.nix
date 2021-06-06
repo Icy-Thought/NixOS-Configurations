@@ -39,7 +39,6 @@ let
     mesa                                                	    # FOSS 3D Graphics Lib.
     mesa-demos                                          	    # Collection of demos/tests OpenGL & Mesa.
     vulkan-headers                                      	    # Vulkan Header files + API registery.
-    bash                                                	    # The legendary shell.
     fish                                                	    # Shell with better defaults.
     iwd                                                 	    # WPA_Supplicant alternative.
     pipewire                                            	    # Multimedia pipeline API.

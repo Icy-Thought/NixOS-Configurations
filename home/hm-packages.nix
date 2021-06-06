@@ -38,7 +38,6 @@ let
 
   editorPkgs = with pkgs; [
     gnuplot                                                       # Plotting through programming.
-    neovim-nightly                                                # Neovim + Lua support.
     tmux                                                          # Terminal multiplexer.
   ];
 
@@ -46,8 +45,7 @@ let
     rust-bin.nightly.latest.default                               # Latest Rust compiler.
     rust-analyzer                                                 # Rust-Analyzer for better rust completion.
     languagetool                                                  # Proofreading (grammar checker) for several languages.
-    gcc
-    clang                                                         # C/C++ compiler.
+    gcc                                                           # GNU Compiler Collection.
     ccls                                                          # C/C++ language server powered by clang.
     gnumake                                                       # Controls the generation of executable files.
     cmake                                                         # Automated build automation, testing & packaging software.

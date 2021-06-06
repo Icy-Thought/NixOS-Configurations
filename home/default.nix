@@ -4,6 +4,7 @@
     ./hm-packages.nix
     ./modules/git.nix
     ./modules/fish.nix
+    ./modules/alacritty.nix
     ./modules/emacs.nix
     ./modules/neovim.nix
     ./modules/zathura.nix
@@ -26,9 +27,14 @@
       enable = true;
     };
 
-    alacritty = {
+    bash = {
       enable = true;
-      settings = import ./modules/alacritty.nix;
+      shellAliases = {
+        ls = "ls --color=auto";
+      };
+      bashrcExtra = ''
+        eval "$(starship init bash)"
+      '';
     };
 
     tmux = {

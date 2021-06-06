@@ -49,7 +49,6 @@
 
     extraModulePackages = with config.boot.kernelPackages; [ 
       # amdgpu-pro
-      cpupower 
     ];
     
     kernelParams = [
