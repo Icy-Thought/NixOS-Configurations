@@ -3,7 +3,6 @@
 let
   defaultPkgs = with pkgs; [
     zathura                                                       # Minimal PDF/EPUB/DJUV/.. reader.
-    alacritty                                                     # Rust-based Terminal.
     latest.firefox-nightly-bin                                    # Latest Firefox edition.
     brave                                                         # Chromium-based browser.
     openrazer-daemon                                              # Control your razer hardware.
@@ -47,6 +46,7 @@ let
     rust-bin.nightly.latest.default                               # Latest Rust compiler.
     rust-analyzer                                                 # Rust-Analyzer for better rust completion.
     languagetool                                                  # Proofreading (grammar checker) for several languages.
+    gcc
     clang                                                         # C/C++ compiler.
     ccls                                                          # C/C++ language server powered by clang.
     gnumake                                                       # Controls the generation of executable files.

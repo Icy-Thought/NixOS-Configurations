@@ -12,6 +12,7 @@
   xdg.configFile = {
     "nvim/init.lua".source                   = ../config/nvim/init.lua;
     "nvim/lua/compe-completion.lua".source   = ../config/nvim/lua/compe-completion.lua;
+    "nvim/lua/custom_highlights.lua".source  = ../config/nvim/lua/custom_highlights.lua;
     "nvim/lua/file-icons.lua".source         = ../config/nvim/lua/file-icons.lua;
     "nvim/lua/gitsigns-nvim.lua".source      = ../config/nvim/lua/gitsigns-nvim.lua;
     "nvim/lua/mappings.lua".source           = ../config/nvim/lua/mappings.lua;
@@ -23,6 +24,7 @@
     "nvim/lua/telescope-nvim.lua".source     = ../config/nvim/lua/telescope-nvim.lua;
     "nvim/lua/top-bufferline.lua".source     = ../config/nvim/lua/top-bufferline.lua;
     "nvim/lua/treesitter-nvim.lua".source    = ../config/nvim/lua/treesitter-nvim.lua;
+    "nvim/lua/whichkey.lua".source           = ../config/nvim/lua/whichkey.lua;
     "nvim/lua/zenmode.lua".source            = ../config/nvim/lua/zenmode.lua;
   };
 

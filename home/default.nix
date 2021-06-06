@@ -2,11 +2,10 @@
 {
   imports = [
     ./hm-packages.nix
+    ./modules/git.nix
     ./modules/fish.nix
-    ./modules/alacritty.nix
     ./modules/emacs.nix
     ./modules/neovim.nix
-    ./modules/git.nix
     ./modules/zathura.nix
   ];
 
@@ -25,6 +24,11 @@
   programs = {
     home-manager = {
       enable = true;
+    };
+
+    alacritty = {
+      enable = true;
+      settings = import ./modules/alacritty.nix;
     };
 
     tmux = {
