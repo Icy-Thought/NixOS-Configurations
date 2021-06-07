@@ -9,6 +9,7 @@ let
     moreutils                                                       # An extension to GNU utils.
     direnv                                                          # Shell extension to manage env.
     pciutils                                                        # lspci, setpci & update-pciids support.
+    psmisc                                                          # Useful utilities which uses proc fs.
     wireguard                                                       # Wireguard tools.
     gnupg                                                           # Encrypt/Decrypt software.
     firejail                                                        # Namespace-based sandboxing tool.

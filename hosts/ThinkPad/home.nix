@@ -28,10 +28,6 @@ in {
   nixpkgs = {
     config = {
       allowUnfree = true;
-
-      firefox-nightly = {
-        enableGnomeExtensions = true;
-      };
     };
 
     overlays = [
@@ -39,6 +35,8 @@ in {
     ];
 
   };
+
+  home.file.".mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json".source = "${pkgs.chrome-gnome-shell}/lib/mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json";
 
   home.packages = builtins.concatLists [
     gappsPkgs
