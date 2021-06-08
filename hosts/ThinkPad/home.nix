@@ -36,6 +36,7 @@ in {
 
   };
 
+  # Enable chrome-gnome-shell in FireFox nightly (mozilla-overlay):
   home.file.".mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json".source = "${pkgs.chrome-gnome-shell}/lib/mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json";
 
   home.packages = builtins.concatLists [

@@ -43,12 +43,16 @@ let
 
   devPkgs = with pkgs; [
     rust-bin.nightly.latest.default                               # Latest Rust compiler.
+    languagetool                                                  # Proofreading for several languages.
     rust-analyzer                                                 # Rust-Analyzer for better rust completion.
-    languagetool                                                  # Proofreading (grammar checker) for several languages.
+    nodePackages.javascript-typescript-langserver                 # JS/TS language server.
+    nodePackages.bash-language-server                             # Bash language server.
+    sumneko-lua-language-server                                   # Lua language server.
     gcc                                                           # GNU Compiler Collection.
     ccls                                                          # C/C++ language server powered by clang.
     gnumake                                                       # Controls the generation of executable files.
     cmake                                                         # Automated build automation, testing & packaging software.
+    nodePackages.npm                                              # JS package manager.
     openssl                                                       # Library for SSL and TLS protocols.
     sqlite                                                        # Serverless SQL database.
     jq                                                            # Lightweight JSON processor.
@@ -57,8 +61,6 @@ let
     pipenv                                                        # Python Development workflow for humans.
     graphviz                                                      # Graph visualization tools.
     texlive.combined.scheme-medium                                # LaTeX support.
-    nodePackages.npm                                              # JS package manager.
-    nodePackages.javascript-typescript-langserver                 # Javascript support.
     hugo                                                          # Fast + Modern static web-engine.
   ];
   

@@ -52,8 +52,13 @@
     ];
     
     kernelParams = [
+      "amd_iommu=on" "iommu=pt"
       "pcie_aspm.policy=performance"
     ];
+
+    kernel.sysctl = {
+      "abi.vsyscall" = 0;
+    };
     
     # Set GRUB2 to default boot.
     loader = {
@@ -146,14 +151,9 @@
     };
 
     bluetooth = {
-      enable = false;
+      enable = true;
     };
   };
-
-  systemd.services.resolved.enable = false;
-  systemd.services.systemd-udev-settle.enable = false;
-  systemd.services.avahi-daemon.enable = false;
-  systemd.services.systemd-machined.enable = false;
 
   virtualisation = {
     podman = {
