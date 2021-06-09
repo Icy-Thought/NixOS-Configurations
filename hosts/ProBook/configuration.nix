@@ -49,14 +49,13 @@
   # Boot configurations.
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod;
-    # kernelPackages = pkgs.linuxPackages_xanmod.amdgpu-pro;
     kernelParams = [ "pcie_aspm.policy=performance" ];
     
     # Set GRUB2 to default boot.
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+        efiSysMountPoint = "/boot/efi";
       };
 
       grub = {
@@ -74,21 +73,28 @@
     options = [ "noatime, x-gvfs-hide" ];
   };
 
-  fileSystems."/boot" = {
+  fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/9C99-45AA";
     fsType = "vfat";
-    options = [ "noatime, x-gvfs-hide" ];
+    options = [ "x-gvfs-hide" ];
   };
 
   # Network configurations.
   networking = {
     hostName = "NixOS";
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+
+    # Global useDHCP => deprecated.
     useDHCP = false;
+
+    # Per-interface useDHCP is mandatory. (Not Required by NetworkManager)
+    # interfaces = {
+    #   enp1s0.useDHCP = true;
+    #   wlan0.useDHCP = true;
+    # };
 
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
+      # wifi.backend = "iwd";
     };
   };
 
@@ -143,6 +149,14 @@
     bluetooth = {
       enable = true;
     };
+
+    openrazer = {
+      enable = true;
+      devicesOffOnScreensaver = false;
+      syncEffectsEnabled = true;
+      mouseBatteryNotifier = true;
+    };
+
   };
 
   virtualisation = {

@@ -6,7 +6,6 @@ let
     zathura                                                       # Minimal PDF/EPUB/DJUV/.. reader.
     latest.firefox-nightly-bin                                    # Latest Firefox edition.
     brave                                                         # Chromium-based browser.
-    openrazer-daemon                                              # Control your razer hardware.
     # Polychromatic                                               # GUI to control OpenRazer.
     anki                                                          # Spaced repetition flashcard.
     celluloid                                                     # GTK frontend for MPV.

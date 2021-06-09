@@ -153,6 +153,14 @@
     bluetooth = {
       enable = true;
     };
+
+    openrazer = {
+      enable = true;
+      devicesOffOnScreensaver = false;
+      syncEffectsEnabled = true;
+      mouseBatteryNotifier = true;
+    };
+
   };
 
   virtualisation = {
