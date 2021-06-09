@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 -- blankline
 
-cmd "hi IndentBlanklineChar guifg=#383c44"
+cmd "hi IndentBlanklineChar guifg=#282c34"
 
 -- misc --
 cmd "hi LineNr guifg=#42464e"
@@ -34,7 +34,7 @@ cmd "hi NvimTreeFolderName guifg = #61afef"
 cmd "hi NvimTreeIndentMarker guifg=#383c44"
 cmd "hi NvimTreeNormal guibg=#1b1f27"
 cmd "hi NvimTreeVertSplit guifg=#1e222a"
-cmd "hi NvimTreeRootFolder guifg=#f9929b"
+cmd "hi NvimTreeRootFolder guifg=#1b1f27"
 
 -- telescope
 cmd "hi TelescopeBorder   guifg=#2a2e36"

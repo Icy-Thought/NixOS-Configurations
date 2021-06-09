@@ -11,7 +11,7 @@ return require("packer").startup(
         use "norcalli/nvim-colorizer.lua"
         use "mhinz/vim-startify"
 
-        -- lsp stuff
+        -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
         use "hrsh7th/nvim-compe"
@@ -43,12 +43,11 @@ return require("packer").startup(
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
-
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end,
     {
         display = {
-            border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+            border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}
         }
     }
 )

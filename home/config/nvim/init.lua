@@ -1,8 +1,7 @@
 -- load all plugins
 require "pluginList"
-require "file-icons"
-
 require "misc-utils"
+
 require "top-bufferline"
 require "statusline"
 
@@ -21,21 +20,12 @@ g.auto_save = 0
 
 -- colorscheme related stuff
 cmd "syntax on"
-
 local base16 = require "base16"
 base16(base16.themes["onedark"], true)
 
-require "custom_highlights"
-
--- Transparency
-cmd("hi Normal guibg=NONE ctermbg=NONE")
-cmd "hi LineNr guibg=NONE"
-cmd "hi SignColumn guibg=NONE"
+require "colors"
 
 -- blankline
-
-local indent = 2
-
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 
@@ -50,16 +40,18 @@ require "mappings"
 
 require "telescope-nvim"
 require "nvimTree"
+require "file-icons"
 
--- git signs , lsp symbols etc
+-- Sings/Symbols
 require "gitsigns-nvim"
 require("nvim-autopairs").setup()
 require("lspkind").init()
 
--- hide line numbers in terminal windows
+-- Hide LineNr. in TUI
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
 
--- setup for TrueZen.nvim
+-- Setup for TrueZen.nvim
 require "zenmode"
+require "whichkey"

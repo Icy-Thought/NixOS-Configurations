@@ -2,6 +2,7 @@
 
 let
   defaultPkgs = with pkgs; [
+    wl-clipboard                                                  # Wayland c-p/c-v.
     zathura                                                       # Minimal PDF/EPUB/DJUV/.. reader.
     latest.firefox-nightly-bin                                    # Latest Firefox edition.
     brave                                                         # Chromium-based browser.
@@ -45,14 +46,12 @@ let
     rust-bin.nightly.latest.default                               # Latest Rust compiler.
     languagetool                                                  # Proofreading for several languages.
     rust-analyzer                                                 # Rust-Analyzer for better rust completion.
-    nodePackages.javascript-typescript-langserver                 # JS/TS language server.
-    nodePackages.bash-language-server                             # Bash language server.
     sumneko-lua-language-server                                   # Lua language server.
-    gcc                                                           # GNU Compiler Collection.
+    gcc11                                                         # GNU Compiler Collection.
     ccls                                                          # C/C++ language server powered by clang.
     gnumake                                                       # Controls the generation of executable files.
-    cmake                                                         # Automated build automation, testing & packaging software.
-    nodePackages.npm                                              # JS package manager.
+    cmake                                                         # Build automation, testing & packaging.
+    nodejs-16_x                                                   # I/O framwork for JS v8.
     openssl                                                       # Library for SSL and TLS protocols.
     sqlite                                                        # Serverless SQL database.
     jq                                                            # Lightweight JSON processor.
@@ -63,12 +62,20 @@ let
     texlive.combined.scheme-medium                                # LaTeX support.
     hugo                                                          # Fast + Modern static web-engine.
   ];
+
+  lanservPkgs = with pkgs.nodePackages ; [
+    # javascript-typescript-langserver                             # JavaScript/TypeScript.
+    pyright                                                       # Python.
+    typescript-language-server                                    # TypeScript.
+    bash-language-server                                          # Bash.
+  ];
   
   pyPkgs = with pkgs.python39Packages; [
     black                                                         # Uncompromising Python code formatter.
     isort                                                         # Sort Py imports.
     pyflakes                                                      # Check Py for errors.
     nose-timer                                                    # A timer for nosetests.
+    nose-exclude                                                  # Exclude specific dirs from nosetests runs.
     pytest                                                        # Py Test framework.
   ];                                                            
   
@@ -130,6 +137,7 @@ in {
     gitPkgs 
     editorPkgs 
     devPkgs 
+    lanservPkgs 
     pyPkgs
     spellPkgs 
     nixPkgs 
