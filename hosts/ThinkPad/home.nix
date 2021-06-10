@@ -18,11 +18,16 @@ let
     # gnomeExtensions.pop-os-shell                                # Gnome Tiling Manager.
   ];
 
+  ricePkgs = with pkgs; [
+    orchis-theme
+    flat-remix-gtk
+    whitesur-icon-theme
+  ];
+
 in {
   imports = [
     ../../home/default.nix
-    # ../../home/modules/gnome.nix
-    # ../../home/modules/dconf.nix                       <--- rework <---
+    ../../home/modules/dconf.nix
   ];
 
   nixpkgs = {
@@ -42,6 +47,7 @@ in {
   home.packages = builtins.concatLists [
     gappsPkgs
     gextPkgs
+    ricePkgs
   ];
 
 }
