@@ -38,8 +38,8 @@
       gs  = "git status";
       
       # VPN
-      wup = "wg-quick up akkadian_vpn";
-      wud = "wg-quick down akkadian_vpn";
+      wup = "wg-quick up Akkadian_VPN";
+      wud = "wg-quick down Akkadian_VPN";
     };
   };
 
