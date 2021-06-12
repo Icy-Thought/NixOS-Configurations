@@ -42,6 +42,6 @@ in
     ];
 
     userName = "Icy-Thought";
-    userEmail = "gilganyx@gmail.com";
+    userEmail = "gilganyx@pm.me";
   };
 }

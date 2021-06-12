@@ -19,9 +19,9 @@ let
   ];
 
   ricePkgs = with pkgs; [
-    orchis-theme
+    # orchis-theme
     flat-remix-gtk
-    whitesur-icon-theme
+    # whitesur-icon-theme
   ];
 
 in {
