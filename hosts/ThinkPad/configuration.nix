@@ -53,7 +53,6 @@
     ];
     
     kernelParams = [
-      "amd_iommu=pt" "iommu=soft"
       "pcie_aspm.policy=performance"
       "acpi_backlight=native"
     ];

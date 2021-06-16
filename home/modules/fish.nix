@@ -20,8 +20,8 @@
       nixify = "dconf dump / | dconf2nix > ~/git/NixOS-Configurations/home/modules/dconf.nix";
 
       # Doom Emacs
-      doupg = "doom sync && doom upgrade";
-      doprg = "doom purge";
+      dup = "doom sync && doom upgrade";
+      dpg = "doom purge";
 
       # Fish
       fshcfg = "nvim ~/.config/fish/config.fish";
