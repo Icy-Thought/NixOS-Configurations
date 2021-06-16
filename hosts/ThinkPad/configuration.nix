@@ -6,6 +6,7 @@
       ./services.nix
       ./users.nix
       ./packages.nix
+      ../wireguard.nix
     ];
 
   # Build NixOS from latest stable release.
@@ -52,8 +53,9 @@
     ];
     
     kernelParams = [
-      "amd_iommu=on" "iommu=pt"
+      "amd_iommu=pt" "iommu=soft"
       "pcie_aspm.policy=performance"
+      "acpi_backlight=native"
     ];
 
     kernel.sysctl = {
@@ -64,7 +66,7 @@
     loader = {
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        efiSysMountPoint = "/boot";
       };
 
       grub = {
@@ -79,17 +81,22 @@
     cleanTmpDir = true;
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ef5dca4d-8612-4313-9d56-9ec9d600db77";
-    fsType = "ext4";
-    options = [ "noatime, x-gvfs-hide" ];
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/a2ee4473-ef03-4cb9-8103-ba4c3d8afb1e";
+      fsType = "ext4";
+      options = [ "noatime, x-gvfs-hide" ];
+    };
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/96EA-7815";
-    fsType = "vfat";
-    options = [ "x-gvfs-hide" ];
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/3988-91C5";
+      fsType = "vfat";
+      options = [ "x-gvfs-hide" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/4b1d85cf-c670-4e7e-9b4a-02b3657338dd";
+      fsType = "ext4";
+    };
 
   networking = {
     hostName = "NixOS";
@@ -107,6 +114,24 @@
       enable = true;
       # wifi.backend = "iwd";
     };
+
+    nat = {
+      enable = true;
+      externalInterface = "eth0";
+      internalInterfaces = [ "wg0" ];
+    };
+
+    iproute2 = {
+      enable = true;
+    };
+
+    firewall = {
+      allowedTCPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 51820 ];                                   # Wireguard
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];           # KDE-Connect
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];           # KDE-Connect
+    };
+
   };
 
   # Select internationalisation properties.
@@ -133,12 +158,18 @@
   };
 
   hardware = {
+    enableRedistributableFirmware = true;
+
+    cpu.amd = {
+      updateMicrocode = true;
+    };
+
     opengl = {
       enable = true;
 
       extraPackages = with pkgs; [
-        amdvlk
-        driversi686Linux.amdvlk
+        # amdvlk
+        # driversi686Linux.amdvlk
         rocm-opencl-icd
       ];
 
@@ -165,7 +196,7 @@
 
   virtualisation = {
     podman = {
-      enable = true;
+      enable = false;
 
       # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;

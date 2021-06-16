@@ -38,9 +38,10 @@
       gs  = "git status";
       
       # VPN
-      wup = "wg-quick up Akkadian_VPN";
-      wud = "wg-quick down Akkadian_VPN";
+      wup = "systemctl start wg-quick-Akkadian_VPN.service";
+      wud = "systemctl stop wg-quick-Akkadian_VPN.service";
     };
+
   };
 
   home.packages = with pkgs; [

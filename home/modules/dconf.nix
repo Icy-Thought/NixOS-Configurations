@@ -53,10 +53,6 @@ in
       exec = "alacritty";
     };
 
-    "org/gnome/desktop/background" = {
-      picture-uri = "../wallpaper/irina-iriser-nYIQYg8cQVc-unsplash.jpg";
-    };
-
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
@@ -84,7 +80,7 @@ in
 
     "org/gnome/desktop/peripherals/touchpad" = {
       natural-scroll = true;
-      speed = 0.610294;
+      speed = 0.60;
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
@@ -95,10 +91,6 @@ in
       recent-files-max-age = 30;
       remove-old-temp-files = true;
       remove-old-trash-files = true;
-    };
-
-    "org/gnome/desktop/screensaver" = {
-      picture-uri = "../wallpaper/nixos.png";
     };
 
     "org/gnome/desktop/session" = {
@@ -203,7 +195,7 @@ in
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      favorite-apps = [ "org.gnome.Nautilus.desktop" "org.gnome.Fractal.desktop" "discord.desktop" "org.gnome.Geary.desktop" "emacs.desktop" "Alacritty.desktop" "qalculate-gtk.desktop" ];
+      favorite-apps = [ "org.gnome.Nautilus.desktop" "org.gnome.Fractal.desktop" "discord.desktop" "org.gnome.Geary.desktop" "firefox.desktop" "emacs.desktop" "Alacritty.desktop" "qalculate-gtk.desktop" ];
       welcome-dialog-last-shown-version = "40.1";
     };
 

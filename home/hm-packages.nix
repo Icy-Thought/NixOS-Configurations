@@ -4,7 +4,7 @@ let
   defaultPkgs = with pkgs; [
     wl-clipboard                                                  # Wayland c-p/c-v.
     zathura                                                       # Minimal PDF/EPUB/DJUV/.. reader.
-    latest.firefox-nightly-bin                                    # Latest Firefox edition.
+    latest.firefox-nightly-bin                                    # The better browser!
     brave                                                         # Chromium-based browser.
     # Polychromatic                                               # GUI to control OpenRazer.
     anki                                                          # Spaced repetition flashcard.
@@ -43,7 +43,6 @@ let
 
   devPkgs = with pkgs; [
     rust-bin.nightly.latest.default                               # Latest Rust compiler.
-    languagetool                                                  # Proofreading for several languages.
     rust-analyzer                                                 # Rust-Analyzer for better rust completion.
     sumneko-lua-language-server                                   # Lua language server.
     gcc11                                                         # GNU Compiler Collection.
@@ -51,6 +50,7 @@ let
     gnumake                                                       # Controls the generation of executable files.
     cmake                                                         # Build automation, testing & packaging.
     nodejs-16_x                                                   # I/O framwork for JS v8.
+    languagetool                                                  # Proofreading for several languages.
     openssl                                                       # Library for SSL and TLS protocols.
     sqlite                                                        # Serverless SQL database.
     jq                                                            # Lightweight JSON processor.

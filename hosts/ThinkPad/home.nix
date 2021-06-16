@@ -14,12 +14,14 @@ let
     gnome-packagekit                                              # Allows installing software on Gnome.
   ];
 
-  gextPkgs = with pkgs; [
-    # gnomeExtensions.pop-os-shell                                # Gnome Tiling Manager.
+  gextPkgs = with pkgs.gnomeExtensions; [
+    # pop-os-shell                                                # Gnome Tiling Manager.
+    gsconnect                                                     # KDE Connect for Gnome-shell.
+    user-themes                                                   # Enable Gnome-shell theming.
   ];
 
   ricePkgs = with pkgs; [
-    # orchis-theme
+    orchis-theme
     flat-remix-gtk
     # whitesur-icon-theme
   ];

@@ -16,10 +16,11 @@
     };
 
     overlays = [
-      (import ../overlays/firefox-overlay.nix)
-      (import ../overlays/rust-overlay.nix)
       (import ../overlays/neovim-nightly-overlay.nix)
+      (import ../overlays/mozilla-overlay.nix)
+      (import ../overlays/rust-overlay.nix)
     ];
+
   };
 
   programs = {
@@ -50,7 +51,7 @@
     direnv = {
       enable = true;
       enableFishIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv.enable = true;
     };
 
   };
@@ -58,6 +59,12 @@
   fonts = {
     fontconfig = {
       enable = true;
+    };
+  };
+
+  home.file = {
+    ".doom.d" = {
+      source = ./config/doom.d;
     };
   };
 

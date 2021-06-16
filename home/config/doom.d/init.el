@@ -40,7 +40,7 @@
        (format +onsave)                         ;  automated prettiness
        ;;multiple-cursors                       ; editing in many places at once
        snippets                                 ; my elves. They type so I don't have to
-       ;;word-wrap                              ; soft wrapping with language-aware indent
+       word-wrap                                ; soft wrapping with language-aware indent
        )
 
 (doom! :emacs
@@ -87,6 +87,7 @@
        ;;erlang                                 ; An elegant language for a more civilized age.
        ;;ess                                    ; Emacs speaks statistics.
        ;;(go +lsp)                              ; The hipster dialect.
+       ;;(haskell +lsp)                         ; a language that's lazier than I am
        json                                     ; At least it ain't XML.
        ;;(java +meghanada)                      ; The poster child for carpal tunnel syndrome.
        (javascript +lsp)                        ; All(hope(abandon(ye(who(enter(here)))))).
@@ -97,7 +98,7 @@
               +fold)                            ; Folding ability inside LaTeX.
        ;;ledger                                 ; An accounting system in Emacs.
        lua                                      ; One-based indices? one-based indices.
-       ;;nix                                    ; I hereby declare "nix geht mehr!"
+       nix                                      ; I hereby declare "nix geht mehr!"
        (org +pretty                             ; Prettify org-mode.
             +dragndrop                          ; Enables drag & drop in org-mode.
             +gnuplot                            ; Enables gnu-plotting.
