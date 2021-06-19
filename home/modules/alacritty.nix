@@ -11,8 +11,8 @@
         dynamic_title = true;
       
         dimensions = {
-          lines = 29;
-          columns = 118;
+          columns = 96;
+          lines = 28;
         };
       
         position = {
@@ -48,9 +48,20 @@
       live_config_reload = true;
       
       font = {
-        normal.family = "Iosevka Term SemiBold";
-        bold.family   = "Iosevka Term SemiBold";
-        italic.family = "Iosevka Term SemiBold Italic";
+        normal = {
+          family = "JetBrainsMonoMedium Nerd Font";
+          style = "Medium";
+        };
+
+        bold = {
+          family   = "JetBrainsMonoMedium Nerd Font";
+          style = "Bold";
+        };
+
+        italic = {
+          family = "JetBrainsMonoMedium Nerd Font";
+          style = "Italic";
+        };
       
         size = 12.0;
       

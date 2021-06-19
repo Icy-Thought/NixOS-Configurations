@@ -3,10 +3,15 @@
   systemd.services = {
     systemd-resolved.enable = true;
     systemd-machined.enable = false;
+    upower.enable = true;
   };
 
   services = {
     avahi.enable = false;
+
+    gnome = {
+      gnome-keyring.enable = true;
+    };
 
     printing = {
       enable = true;
@@ -28,7 +33,6 @@
         };
       };
     
-      # GNOME DE:
       displayManager.gdm = {
         enable  = true;
         wayland = true;
@@ -37,19 +41,18 @@
       desktopManager.gnome = {
         enable = true;
       };
-
-      # KDE-Plasma
-      # displayManager.sddm.enable = true;
-      # desktopManager.plasma5.enable = true;
-    };
+   };
 
     flatpak = {
       enable = true;
     };
 
-    dbus.packages = with pkgs; [ 
-      gnome.dconf 
-    ];
+    dbus = {
+      enable = true;
+      packages = with pkgs; [ 
+        gnome.dconf 
+      ];
+    };
 
     udev = {
       extraRules = ''

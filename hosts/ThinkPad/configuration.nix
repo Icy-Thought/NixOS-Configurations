@@ -3,8 +3,8 @@
 {
   imports = [ 
       ./hardware-configuration.nix
-      ./services.nix
       ./users.nix
+      ./services.nix
       ./packages.nix
       ../wireguard.nix
     ];
@@ -78,6 +78,7 @@
     };
 
     cleanTmpDir = true;
+
   };
 
   fileSystems."/" =
@@ -111,7 +112,7 @@
 
     networkmanager = {
       enable = true;
-      # wifi.backend = "iwd";
+      wifi.backend = "iwd";
     };
 
     nat = {
@@ -202,17 +203,6 @@
     };
   };
 
-  fonts.fonts = with pkgs; [
-    source-code-pro
-    emacs-all-the-icons-fonts
-    iosevka-bin
-    liberation_ttf
-    font-awesome
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
-
   documentation = {
     man.enable   = true;
     info.enable  = true;
@@ -224,5 +214,17 @@
     dconf.enable = true;
     gnupg.agent.enable = true;
   };
+
+   fonts = {
+     enableDefaultFonts = true;
+   
+     fontconfig = {
+       defaultFonts = {
+         serif = [ "Cantarell" "Noto Kufi Arabic" ];
+         sansSerif = [ "Cantarell" "Noto Kufi Arabic" ];
+         monospace = [ "Cantarell" "Noto Kufi Arabic" ];
+       };
+     };
+   };
 
 }

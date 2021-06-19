@@ -70,7 +70,7 @@ in
       font-antialiasing = "grayscale";
       font-hinting = "slight";
       gtk-im-module = "ibus";
-      monospace-font-name = "Iosevka Semi-Bold 12";
+      monospace-font-name = "JetBrainsMono Nerd Font Medium 12";
       show-battery-percentage = true;
     };
 
@@ -220,8 +220,8 @@ in
       cursor-background-color = "#5C5C63637070";
       cursor-colors-set = true;
       cursor-foreground-color = "#1E1E21212727";
-      default-size-columns = 118;
-      default-size-rows = 27;
+      default-size-columns = 96;
+      default-size-rows = 28;
       font = "JetBrainsMonoMedium Nerd Font Medium 12";
       foreground-color = "#5C5C63637070";
       palette = [ "#000000000000" "#E0E06C6C7575" "#9898C3C37979" "#D1D19A9A6666" "#6161AFAFEFEF" "#C6C67878DDDD" "#5656B6B6C2C2" "#ABABB2B2BFBF" "#5C5C63637070" "#E0E06C6C7575" "#9898C3C37979" "#D1D19A9A6666" "#6161AFAFEFEF" "#C6C67878DDDD" "#5656B6B6C2C2" "#FFFFFEFEFEFE" ];
