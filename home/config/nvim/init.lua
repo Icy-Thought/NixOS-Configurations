@@ -23,7 +23,7 @@ cmd "syntax on"
 local base16 = require "base16"
 base16(base16.themes["onedark"], true)
 
-require "colors"
+require "highlights"
 
 -- blankline
 g.indentLine_enabled = 1
@@ -50,8 +50,11 @@ require("lspkind").init()
 -- Hide LineNr. in TUI
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
+   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+   au BufEnter term://* set laststatus=0 
 ]], false)
 
 -- Setup for TrueZen.nvim
 require "zenmode"
 require "whichkey"
+require("nvim_comment").setup()
