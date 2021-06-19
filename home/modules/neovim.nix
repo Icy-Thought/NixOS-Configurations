@@ -10,9 +10,9 @@
     withPython3  = true; # for plugins
   };
 
-  xdg.configFile = {
-    "nvim/init.lua".source = ../config/nvim/init.lua;
-    "nvim/lua".source      = ../config/nvim/lua;
+  xdg.configFile."nvim" = {
+    source = ../config/nvim;
+    recursive = true;
   };
 
 }
