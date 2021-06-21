@@ -33,7 +33,7 @@
     ];
 
   powerManagement = {
-    cpuFreqGovernor = "schedutil";
+    cpuFreqGovernor = lib.mkDefault "schedutil";
   };
 
 }
