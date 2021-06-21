@@ -44,8 +44,8 @@
 *** Doom-Theme + Doom-Font
 #+begin_src emacs-lisp
 (setq
- doom-font (font-spec :family "Iosevka" :size 16 :weight 'Semi-Bold)
- doom-big-font (font-spec :family "Iosevka" :size 20 :weight 'Semi-Bold)
+ doom-font (font-spec :family "Iosevka" :size 16 :weight 'Medium)
+ doom-big-font (font-spec :family "Iosevka" :size 20 :weight 'Bold)
  doom-theme 'doom-horizon)
 #+end_src
 
@@ -349,7 +349,7 @@ NOTE: Press ~K~ on a module to view its documentation, and ~gd~ to browse its di
        ;;erlang                                 ; An elegant language for a more civilized age.
        ;;ess                                    ; Emacs speaks statistics.
        ;;(go +lsp)                              ; The hipster dialect.
-       ;;(haskell +lsp)                         ; a language that's lazier than I am
+       (haskell +lsp)                           ; a language that's lazier than I am
        json                                     ; At least it ain't XML.
        ;;(java +meghanada)                      ; The poster child for carpal tunnel syndrome.
        (javascript +lsp)                        ; All(hope(abandon(ye(who(enter(here)))))).

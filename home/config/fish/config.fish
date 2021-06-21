@@ -8,15 +8,6 @@ function fish_title
     echo $argv[1]
 end
 
-# Defining Paths
-set PATH $HOME/.cargo/bin $PATH
-set PATH $HOME/.emacs.d/bin $PATH
-set PATH $HOME/go/bin $PATH
-set PATH $HOME/.local/bin $PATH
-
-# Sources
-starship init fish | source
-
 # Tmux on terminal start
 if status is-interactive
 and not set -q TMUX
@@ -87,3 +78,6 @@ function print_fish_colors --description 'Shows the various fish colors being us
         echo '|________________________________________|________________________________________|'\n
     end
 end
+
+# Sources
+starship init fish | source

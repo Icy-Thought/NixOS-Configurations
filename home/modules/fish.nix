@@ -10,23 +10,17 @@
       ls     = "exa -l";
       lsa    = "exa -la";
       ytdl   = "youtube-dl";
+      bat0   = "upower -i /org/freedesktop/UPower/devices/battery_BAT0";
 
       # Application-related
       temacs = "emacsclient -t";
       emacs  = "emacsclient -c";
       zoom   = "firejail zoom";
 
-      # NixOS
-      nixify = "dconf dump / | dconf2nix > ~/git/NixOS-Configurations/home/modules/dconf.nix";
+      # VPN
+      wup = "systemctl start wg-quick-Akkadian_VPN.service";
+      wud = "systemctl stop wg-quick-Akkadian_VPN.service";
 
-      # Doom Emacs
-      dup = "doom sync && doom upgrade";
-      dpg = "doom purge";
-
-      # Fish
-      fshcfg = "nvim ~/.config/fish/config.fish";
-      bat0   = "upower -i /org/freedesktop/UPower/devices/battery_BAT0";
-      
       # Git
       g   = "git";
       gc  = "git clone";
@@ -36,12 +30,11 @@
       gps = "git push";
       gpl = "git pull";
       gs  = "git status";
-      
-      # VPN
-      wup = "systemctl start wg-quick-Akkadian_VPN.service";
-      wud = "systemctl stop wg-quick-Akkadian_VPN.service";
-    };
 
+      # NixOS
+      g2nix = "dconf dump / | dconf2nix > ~/git/NixOS-Configurations/home/modules/dconf.nix";
+      
+    };
   };
 
   home.packages = with pkgs; [

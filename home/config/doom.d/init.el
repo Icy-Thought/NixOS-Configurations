@@ -87,7 +87,7 @@
        ;;erlang                                 ; An elegant language for a more civilized age.
        ;;ess                                    ; Emacs speaks statistics.
        ;;(go +lsp)                              ; The hipster dialect.
-       ;;(haskell +lsp)                         ; a language that's lazier than I am
+       (haskell +lsp)                           ; a language that's lazier than I am
        json                                     ; At least it ain't XML.
        ;;(java +meghanada)                      ; The poster child for carpal tunnel syndrome.
        (javascript +lsp)                        ; All(hope(abandon(ye(who(enter(here)))))).

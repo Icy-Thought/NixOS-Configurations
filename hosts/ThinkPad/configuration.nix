@@ -168,8 +168,8 @@
       enable = true;
 
       extraPackages = with pkgs; [
-        # amdvlk
-        # driversi686Linux.amdvlk
+        amdvlk
+        driversi686Linux.amdvlk
         rocm-opencl-icd
       ];
 
