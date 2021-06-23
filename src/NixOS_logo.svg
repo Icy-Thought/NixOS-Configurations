@@ -106,8 +106,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="622.25397"
-     inkscape:cy="315.36962"
+     inkscape:cx="992.77792"
+     inkscape:cy="265.87215"
      inkscape:document-units="px"
      inkscape:current-layer="g5329"
      showgrid="false"
@@ -448,6 +448,8 @@
          id="tspan4890"
          style="font-size:437.5px;fill:#5176c1;fill-opacity:1;stroke-width:0.9375"
          x="688.19586"
-         y="-541.77997">NixOS</tspan></text>
+         y="-541.77997">Nix<tspan
+   style="fill:#7eb7e2;fill-opacity:1"
+   id="tspan31538">OS</tspan></tspan></text>
   </g>
 </svg>
