@@ -5,12 +5,12 @@ let
   perf = config.boot.kernelPackages.perf;
 
   kernelPkgs = with pkgs; [
-    cpupower                                    # Examine/Tool powersaving features.
-    perf                                        # Profile & Performance counter.
+    cpupower                                # Examine/Tool powersaving features.
+    perf                                    # Profile & Performance counter.
   ];
 
   defaultPkgs = with pkgs; [
-    chrome-gnome-shell                          # Gnome Shell integration for Chrome.
+    chrome-gnome-shell                      # Gnome Shell integration for Chrome.
   ];
 
   utilPkgs = with pkgs; [
@@ -41,9 +41,9 @@ let
     common-updater-scripts                  # Common nix updating scripts????
     zstd                                    # Undo-fu-session/undo-tree-compression.
     unrar                                   # Extracting files from rar files.
-  ];
-
-  envPkgs = with pkgs; [
+  ];                                        
+                                            
+  envPkgs = with pkgs; [                    
     wayland                                 # Wayland window system code + protocol.
     mesa                                    # FOSS 3D Graphics Lib.
     mesa-demos                              # Collection of demos/tests OpenGL & Mesa.
