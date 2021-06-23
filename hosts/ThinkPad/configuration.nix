@@ -346,8 +346,8 @@ in {
 
   services = {
     flatpak.enable = true;
-    gvfs.enable = lib.mkDefault true;
-    avahi.enable = lib.mkDefault false;
+    gvfs.enable = true;
+    avahi.enable = false;
     hdapsd.enable = lib.mkDefault true;
 
     gnome = {
