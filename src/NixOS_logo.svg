@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="488mm"
+   width="492mm"
    height="136.68491mm"
-   viewBox="0 0 1729.1339 484.31659"
+   viewBox="0 0 1743.3071 484.31659"
    id="svg2"
    version="1.1"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
@@ -106,8 +106,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="1080.4592"
-     inkscape:cy="357.79603"
+     inkscape:cx="622.25397"
+     inkscape:cy="315.36962"
      inkscape:document-units="px"
      inkscape:current-layer="g5329"
      showgrid="false"
@@ -124,7 +124,7 @@
      inkscape:pagecheckerboard="0"
      showguides="true"
      inkscape:guide-bbox="true"
-     width="474.73227mm" />
+     width="489mm" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -441,13 +441,13 @@
     <text
        xml:space="preserve"
        style="font-size:437.5px;line-height:1.25;font-family:Brushot;-inkscape-font-specification:Brushot;fill:#5176c1;fill-opacity:1;stroke-width:0.9375"
-       x="671.94232"
-       y="-541.58643"
+       x="688.19586"
+       y="-541.77997"
        id="text4892"><tspan
          sodipodi:role="line"
          id="tspan4890"
          style="font-size:437.5px;fill:#5176c1;fill-opacity:1;stroke-width:0.9375"
-         x="671.94232"
-         y="-541.58643">NixOS</tspan></text>
+         x="688.19586"
+         y="-541.77997">NixOS</tspan></text>
   </g>
 </svg>
