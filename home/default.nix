@@ -87,6 +87,7 @@
     ];
 
     sessionVariables = {
+      MOZ_ENABLE_WAYLAND = 1;
       DOOMDIR = "${config.home.homeDirectory}/git/NixOS-Configurations/home/config/doom.d";
     };
 

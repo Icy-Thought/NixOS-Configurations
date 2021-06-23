@@ -1,12 +1,67 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, pkgs, ... }:
 
-{
+let
+  cpupower = config.boot.kernelPackages.cpupower;
+  perf = config.boot.kernelPackages.perf;
+
+  kernelPkgs = with pkgs; [
+    cpupower                                    # Examine/Tool powersaving features.
+    perf                                        # Profile & Performance counter.
+  ];
+
+  defaultPkgs = with pkgs; [
+    chrome-gnome-shell                          # Gnome Shell integration for Chrome.
+  ];
+
+  utilPkgs = with pkgs; [
+    binutils                                # Tools for manipulating binaries.
+    moreutils                               # An extension to GNU utils.
+    killall                                 # Completely eradicate processes.
+    direnv                                  # Shell extension to manage env.
+    pciutils                                # lspci, setpci & update-pciids support.
+    psmisc                                  # Useful utilities which uses proc fs.
+    wireguard                               # Wireguard tools.
+    gnupg                                   # Encrypt/Decrypt software.
+    firejail                                # Namespace-based sandboxing tool.
+    exiftool                                # Control file metadata.
+    fail2ban				    # Scans failed login attempts + bans IP.
+    usbguard				    # Protect against infected USB devices.
+    xclip                                   # Copy/Paste in XOrg terminal.
+    wl-clipboard                            # Wayland c-p/c-v.
+    gh                                      # Official GitHub client.
+    pv                                      # Progress-bar for mv/cp.
+    fd                                      # faster find.
+    exa                                     # better ls.
+    ripgrep                                 # faster grep.
+    skim                                    # faster fzf.
+    tree 				    # Tree view.
+    bustle                                  # Sequence diagrams for D-Bus traffic.
+    dfeet                                   # D-Bus debugger.
+    diffoscope                              # In-depth comparison tool.
+    common-updater-scripts                  # Common nix updating scripts????
+    zstd                                    # Undo-fu-session/undo-tree-compression.
+    unrar                                   # Extracting files from rar files.
+  ];
+
+  envPkgs = with pkgs; [
+    wayland                                 # Wayland window system code + protocol.
+    mesa                                    # FOSS 3D Graphics Lib.
+    mesa-demos                              # Collection of demos/tests OpenGL & Mesa.
+    vulkan-headers                          # Vulkan Header files + API registery.
+    fish                                    # Shell with better defaults.
+    iwd                                     # WPA_Supplicant alternative.
+    pipewire                                # Multimedia pipeline API.
+    git                                     # Tool for git usage.
+    podman                                  # Docker alternative.
+    appimage-run 			    # Enable AppImages support in NixOS.
+    xdg-desktop-portal-gtk                  # DIP for sandboxed apps.
+  ];
+
+in {
   imports = [ 
       ./hardware-configuration.nix
-      ./users.nix
-      ./services.nix
-      ./packages.nix
       ../wireguard.nix
+      # ./containers.nix
     ];
 
   # Build NixOS from latest stable release.
@@ -58,7 +113,7 @@
     ];
 
     kernel.sysctl = {
-      "abi.vsyscall" = 0;
+      "abi.vsyscall" = 1;
     };
     
     # Set GRUB2 to default boot.
@@ -150,6 +205,32 @@
 
   time.timeZone = "Europe/Stockholm";
 
+  users = {
+    defaultUserShell = pkgs.fish;
+    mutableUsers = false;
+
+    users.root = {
+       initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
+       shell = pkgs.bash;
+    };
+
+    users.sirius = {
+      isNormalUser = true;
+      home = "/home/sirius";
+      shell = pkgs.fish;
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
+      initialHashedPassword = "$6$DMQjZ0Nn8JAb$2MBYjRZvhACwUJrDXI6GciNglr.KM3Yaza4CMUaG8HCxOJ2EtRqZZKvTBzRhIPQWjKiYeU3cCpntQNkToiUeu0";
+    };
+
+    users.orca = {
+      isNormalUser = true;
+      home = "/home/orca";
+      shell = pkgs.fish;
+      extraGroups = [ "wheel" "users" "network" "audio" "video" "storage" "plugdev" "adbusers" ];
+      initialHashedPassword = "$6$Xny1A0ZwSSw/t1$3MUaZ0Cr4nV/N.n2VTWLIg1of8SAzAFm7EA.KRFYXeRRitIfKAAeFLT8AVGxP8NyhYOPkRngclRQjqc5Gmzqb0";
+    };
+  };
+
   # Recommended for pipewire
   security = {
     rtkit = {
@@ -158,23 +239,26 @@
   };
 
   hardware = {
-    enableRedistributableFirmware = true;
-
-    cpu.amd = {
-      updateMicrocode = true;
-    };
+    cpu.amd.updateMicrocode = 
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     opengl = {
       enable = true;
 
       extraPackages = with pkgs; [
+        mesa
         amdvlk
-        driversi686Linux.amdvlk
         rocm-opencl-icd
+        rocm-opencl-runtime
+      ];
+      
+      extraPackages32 = with pkgs.pkgsi686Linux; [ 
+        mesa 
+        amdvlk
       ];
 
-      driSupport = true;
-      driSupport32Bit = true;
+      driSupport = lib.mkDefault true;
+      driSupport32Bit = lib.mkDefault true;
     };
 
     pulseaudio = {
@@ -215,16 +299,152 @@
     gnupg.agent.enable = true;
   };
 
-   fonts = {
-     enableDefaultFonts = true;
-   
-     fontconfig = {
-       defaultFonts = {
-         serif = [ "Cantarell" "Noto Kufi Arabic" ];
-         sansSerif = [ "Cantarell" "Noto Kufi Arabic" ];
-         monospace = [ "Cantarell" "Noto Kufi Arabic" ];
-       };
-     };
-   };
+  environment = {
+    systemPackages = builtins.concatLists [
+      # kernelPkgs
+      defaultPkgs
+      utilPkgs
+      envPkgs
+    ];
+
+    variables = {
+      VK_ICD_FILENAMES = [ "/run/opengl-driver/share/vulkan/icd.d/amd_icd64.json" ];
+    };
+  };
+
+  fonts = {
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+        (nerdfonts.override { fonts = [ 
+          "Iosevka"
+          "JetBrainsMono"
+          ]; 
+        })
+    
+        source-code-pro
+        emacs-all-the-icons-fonts
+        liberation_ttf
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+      ];
+    
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Cantarell" "Noto Kufi Arabic" ];
+        sansSerif = [ "Cantarell" "Noto Kufi Arabic" ];
+        monospace = [ "Cantarell" "Noto Kufi Arabic" ];
+      };
+    };
+  };
+
+  systemd.services = {
+    systemd-resolved.enable = true;
+    systemd-machined.enable = false;
+    upower.enable = true;
+  };
+
+  services = {
+    flatpak.enable = true;
+    gvfs.enable = lib.mkDefault true;
+    avahi.enable = lib.mkDefault false;
+    hdapsd.enable = lib.mkDefault true;
+
+    gnome = {
+      gnome-keyring.enable = true;
+      chrome-gnome-shell.enable = true;
+    };
+
+    printing = {
+      enable = true;
+    };
+
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu"];
+
+      layout = "us";
+      xkbOptions = "eurosign:e";
+
+      libinput = {
+        enable = true;
+        touchpad = {
+          naturalScrolling = true;
+          tapping = true;
+          disableWhileTyping = true;
+        };
+      };
+    
+      displayManager.gdm = {
+        enable  = true;
+        wayland = true;
+      };
+
+      desktopManager.gnome = {
+        enable = true;
+        # debug = true;
+      };
+    };
+
+    dbus = {
+      enable = true;
+      packages = with pkgs; [ 
+        gnome.dconf 
+      ];
+    };
+
+    udev = {
+      extraRules = ''
+        ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="none"
+        ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+        ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+      '';
+
+      packages = with pkgs; [
+        gnome.gnome-settings-daemon 
+      ];
+
+    };
+
+    mpd = {
+      enable = false;
+      extraConfig = builtins.readFile ../../nixpkgs/config/mpd.conf;
+    };
+
+    pipewire = {
+      enable = true;
+
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+
+      pulse.enable = true;
+      # jack.enable = true;
+
+      # Bluetooth pipewire settings:
+      media-session.config.bluez-monitor.rules = [
+        {
+          matches = [ { "device.name" = "~bluez_card.*"; } ];
+          actions = {
+            "update-props" = {
+              "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
+              "bluez5.msbc-support" = true;
+            };
+          };
+        }
+
+        {
+          matches = [
+            { "node.name" = "~bluez_input.*"; }
+            { "node.name" = "~bluez_output.*"; }
+          ];
+          actions = {
+            "node.pause-on-idle" = false;
+          };
+        }
+      ];
+    };
+  };
 
 }

@@ -4,7 +4,7 @@ let
   defaultPkgs = with pkgs; [
     wl-clipboard                                   # Wayland c-p/c-v.
     zathura                                        # Minimal PDF/EPUB/DJUV/.. reader.
-    latest.firefox-nightly-bin                     # The better browser!
+    latest.firefox-nightly-bin                     # Latest Firefox Browser.
     brave                                          # Chromium-based browser.
     # Polychromatic                                # GUI to control OpenRazer.
     anki                                           # Spaced repetition flashcard.

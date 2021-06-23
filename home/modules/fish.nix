@@ -32,9 +32,9 @@
       gs  = "git status";
 
       # NixOS
-      g2nix = "dconf dump / | dconf2nix > ~/git/NixOS-Configurations/home/modules/dconf.nix";
-      
+      g2nix = "dconf dump / | dconf2nix > dconf.nix";
     };
+
   };
 
   home.packages = with pkgs; [
