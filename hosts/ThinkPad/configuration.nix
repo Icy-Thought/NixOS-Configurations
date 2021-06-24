@@ -1,14 +1,6 @@
 { config, lib, pkgs, ... }:
 
 let
-  cpupower = config.boot.kernelPackages.cpupower;
-  perf = config.boot.kernelPackages.perf;
-
-  kernelPkgs = with pkgs; [
-    cpupower                                # Examine/Tool powersaving features.
-    perf                                    # Profile & Performance counter.
-  ];
-
   defaultPkgs = with pkgs; [
     chrome-gnome-shell                      # Gnome Shell integration for Chrome.
   ];
@@ -24,8 +16,6 @@ let
     gnupg                                   # Encrypt/Decrypt software.
     firejail                                # Namespace-based sandboxing tool.
     exiftool                                # Control file metadata.
-    fail2ban				    # Scans failed login attempts + bans IP.
-    usbguard				    # Protect against infected USB devices.
     xclip                                   # Copy/Paste in XOrg terminal.
     wl-clipboard                            # Wayland c-p/c-v.
     gh                                      # Official GitHub client.
@@ -105,6 +95,8 @@ in {
 
     extraModulePackages = with config.boot.kernelPackages; [ 
       # amdgpu-pro
+      # perf
+      cpupower
     ];
     
     kernelParams = [
@@ -301,7 +293,6 @@ in {
 
   environment = {
     systemPackages = builtins.concatLists [
-      # kernelPkgs
       defaultPkgs
       utilPkgs
       envPkgs
@@ -345,10 +336,13 @@ in {
   };
 
   services = {
-    flatpak.enable = true;
     gvfs.enable = true;
     avahi.enable = false;
+    flatpak.enable = true;
+
     hdapsd.enable = lib.mkDefault true;
+    fail2ban.enable = false;
+    usbguard.enable = false;
 
     gnome = {
       gnome-keyring.enable = true;

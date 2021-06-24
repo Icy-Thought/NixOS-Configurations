@@ -2,22 +2,20 @@
 
 let
   gappsPkgs= with pkgs.gnome; [
-    geary                                                         # Gnome 2nd E-Mail client.
-    zenity                                                        # Display Dialogs.
-    polari                                                        # Gnome IRC client.
-    meld                                                          # Visual merge/diff tool.
-    gnome-boxes                                                   # Remove/Virtual system management.
-    gnome-dictionary                                              # To look up mispellings.
-    gnome-disk-utility                                            # Manage your disks through gnome.
-    gnome-tweak-tool                                              # Advance Gnome setting control.
-    gnome-software                                                # Gnome software store.
-    gnome-packagekit                                              # Allows installing software on Gnome.
-  ];
-
-  gextPkgs = with pkgs.gnomeExtensions; [
-    # pop-os-shell                                                # Gnome Tiling Manager.
-    gsconnect                                                     # KDE Connect for Gnome-shell.
-    user-themes                                                   # Enable Gnome-shell theming.
+    geary                                           # Gnome E-Mail client.
+    zenity                                          # Display Dialogs.
+    polari                                          # Gnome IRC client.
+    meld                                            # Visual merge/diff tool.
+    gnome-boxes                                     # Virtual system management.
+    gnome-dictionary                                # Look up mispellings.
+    gnome-disk-utility                              # Manage disks (Gnome).
+    gnome-tweak-tool                                # Advance Gnome setting control.
+  ];                                                
+                                                    
+  gextPkgs = with pkgs.gnomeExtensions; [           
+    # pop-os-shell                                  # Gnome Tiling Manager.
+    gsconnect                                       # KDE Connect for Gnome-shell.
+    user-themes                                     # Enable Gnome-shell theming.
   ];
 
   ricePkgs = with pkgs; [
