@@ -2,6 +2,7 @@
 #+DATE: <2021-06-05 lör>
 
 * Table of Contents :TOC:
+- [[#heads-up][HEADS-UP]]
 - [[#introduction][Introduction]]
 - [[#getting-started][Getting Started]]
   - [[#partitioning--formatting][Partitioning & Formatting]]
@@ -15,6 +16,11 @@
   - [[#home-manager][Home-Manager]]
 - [[#congratulations][Congratulations!]]
 - [[#useful-links][Useful Links]]
+
+* HEADS-UP
+This repository have been archived because of my recent migration from a =configuration.nix= based system -> Nix-Flake system. If you wish to follow my journey throughout the world of Nix, then I'd like to invite you to my new humble home and more up-to-date repository: [[https://github.com/Icy-Thought/Snowflake][Snowflake]]!
+
+See you on the other side! 🚀
 
 * Introduction
 [[./src/desktop.png]]

@@ -128,22 +128,23 @@ in {
 
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a2ee4473-ef03-4cb9-8103-ba4c3d8afb1e";
-      fsType = "ext4";
-      options = [ "noatime, x-gvfs-hide" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/a2ee4473-ef03-4cb9-8103-ba4c3d8afb1e";
+    fsType = "ext4";
+    options = [ "noatime, x-gvfs-hide" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3988-91C5";
-      fsType = "vfat";
-      options = [ "x-gvfs-hide" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/4b1d85cf-c670-4e7e-9b4a-02b3657338dd";
+    fsType = "ext4";
+    options = [ "noatime" ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/4b1d85cf-c670-4e7e-9b4a-02b3657338dd";
-      fsType = "ext4";
-    };
+  fileSystems."/boot" = { 
+    device = "/dev/disk/by-uuid/3988-91C5";
+    fsType = "vfat";
+    options = [ "x-gvfs-hide" ];
+  };
 
   networking = {
     hostName = "NixOS";
@@ -263,7 +264,7 @@ in {
 
     openrazer = {
       enable = true;
-      devicesOffOnScreensaver = false;
+      devicesOffOnScreensaver = true;
       syncEffectsEnabled = true;
       mouseBatteryNotifier = true;
     };
